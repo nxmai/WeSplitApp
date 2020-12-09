@@ -1,0 +1,57 @@
+﻿<Window x:Class="WeSplit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeSplit"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" >
+
+    <Window.Background>
+        <ImageBrush  ImageSource="Data/Images/background.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+    </Window.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="410"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.75*" />
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition Width="0.9*"/>
+                <ColumnDefinition Width="0.75*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <TextBlock Text="WeSplit" VerticalAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="White" Margin="30 0 0 0"></TextBlock>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <TextBlock Text="Địa danh" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563"></TextBlock>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <TextBlock Text="Lịch sử" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563" ></TextBlock>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <TextBlock Text="Thêm chuyến đi" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563"></TextBlock>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <TextBlock Text="Thông tin" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563"></TextBlock>
+            </Grid>
+
+            <Grid Grid.Column="5">
+                <TextBlock Text="Cài đặt" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563"></TextBlock>
+            </Grid>
+
+        </Grid>
+        
+    </Grid>
+</Window>
