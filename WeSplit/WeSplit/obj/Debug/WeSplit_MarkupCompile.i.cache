@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\
+D:\weSplit\WeSplitApp\WeSplit\WeSplit\obj\Debug\
 WeSplit
 none
 false
 DEBUG;TRACE
-D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\App.xaml
-11151548125
+D:\weSplit\WeSplitApp\WeSplit\WeSplit\App.xaml
+2-1591083851
 
-6-1954230052
-13-1505183044
-MainWindow.xaml;
+7-723993867
+15-342101284
+DetailWindow.xaml;MainWindow.xaml;
 
 True
 
