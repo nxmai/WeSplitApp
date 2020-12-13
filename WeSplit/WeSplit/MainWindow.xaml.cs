@@ -22,12 +22,17 @@ namespace WeSplit
    
     public partial class MainWindow : Window
     {
-        
+        wesplitEntities db = new wesplitEntities();
+        public static ListView datagrid;
+
         public MainWindow()
         {
             InitializeComponent();
 
-      
+            mydatagrid.ItemsSource = db.places.ToList();
+            datagrid = mydatagrid;
+
+            
 
         }
 
@@ -36,6 +41,12 @@ namespace WeSplit
             Window detail = new DetailWindow();
 
             detail.ShowDialog();
+        }
+
+        private void getId(object sender, RoutedEventArgs e)
+        {
+            int id = (mydatagrid.SelectedItem as place).id;
+            MessageBox.Show($"{id}");
         }
     }
 }

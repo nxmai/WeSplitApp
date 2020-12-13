@@ -52,7 +52,50 @@
             </Grid>
 
         </Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Height="90" Margin="763,44,0,0" Grid.Row="1" VerticalAlignment="Top" Width="175" Click="Button_Click"/>
+
+        <Grid Grid.Row="1">
+            <ListView x:Name="mydatagrid">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="200" Header="Địa điểm"  >
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding id}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Khoản chi" Width="98">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding name}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Khoản chi" Width="98">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding address}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            
+            <!--<DockPanel>
+                <DataGrid x:Name="mydatagrid" DataGridCell.Selected="getId">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="id" Binding="{Binding id}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="name" Binding="{Binding name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="address" Binding="{Binding address}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="discription" Binding="{Binding discription}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>-->
+        </Grid>
+        
+        <Button Content="Button" HorizontalAlignment="Left" Height="90" Margin="766,197,0,0" Grid.Row="1" VerticalAlignment="Top" Width="175" Click="Button_Click"/>
 
     </Grid>
 </Window>

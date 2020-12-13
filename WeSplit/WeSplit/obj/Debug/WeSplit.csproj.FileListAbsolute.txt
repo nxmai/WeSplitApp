@@ -26,3 +26,9 @@ D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignColors.pdb
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.dll
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.SqlServer.dll
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.xml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.SqlServer.xml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit_Content.g.cs
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\App.baml
