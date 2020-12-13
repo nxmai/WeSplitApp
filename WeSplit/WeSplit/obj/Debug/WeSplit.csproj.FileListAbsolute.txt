@@ -12,3 +12,12 @@ D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.csproj.GenerateResource.cache
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.exe
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.pdb
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.dll
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.Wpf.dll
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.pdb
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.xml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.Wpf.pdb
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.Wpf.xml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\DetailWindow.g.cs
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\DetailWindow.baml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.csproj.CopyComplete
