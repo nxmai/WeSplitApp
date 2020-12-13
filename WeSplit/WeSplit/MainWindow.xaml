@@ -52,7 +52,7 @@
             </Grid>
 
         </Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Height="90" Margin="485,155,0,0" Grid.Row="1" VerticalAlignment="Top" Width="175" Click="Button_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="90" Margin="763,44,0,0" Grid.Row="1" VerticalAlignment="Top" Width="175" Click="Button_Click"/>
 
     </Grid>
 </Window>
