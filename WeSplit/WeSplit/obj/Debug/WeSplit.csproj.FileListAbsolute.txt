@@ -32,3 +32,5 @@ D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.SqlServer.xml
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit_Content.g.cs
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\App.baml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\PlacesWindow.g.cs
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\PlacesWindow.baml

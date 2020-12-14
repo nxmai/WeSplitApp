@@ -10,45 +10,34 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WeSplit
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for PlacesWindow.xaml
     /// </summary>
-    
-   
-    public partial class MainWindow : Window
+    public partial class PlacesWindow : Window
     {
         wesplitEntities db = new wesplitEntities();
         public static ListView data;
-
-        public MainWindow()
+        public PlacesWindow()
         {
             InitializeComponent();
-
-            tripdata.ItemsSource = db.trips.ToList();
-            data = tripdata;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Window detail = new DetailWindow();
-            detail.ShowDialog();
+            placedata.ItemsSource = db.places.ToList();
+            data = placedata;
         }
 
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = (sender as FrameworkElement).DataContext;
-            var x = (item as trip).id;
+            var x = (item as place).id;
         }
 
-        private void placeWindow(object sender, MouseButtonEventArgs e)
+        private void mainWindow(object sender, MouseButtonEventArgs e)
         {
-            Window place = new PlacesWindow();
-            place.ShowDialog();
+            Window main = new MainWindow();
+            main.ShowDialog();
         }
     }
 }

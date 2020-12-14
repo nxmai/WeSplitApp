@@ -1,19 +1,17 @@
-﻿<Window x:Class="WeSplit.MainWindow"
+﻿<Window x:Class="WeSplit.PlacesWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeSplit"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="PlacesWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
     <Window.Background>
         <ImageBrush  ImageSource="Data/Images/background.png" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Background>
 
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition/>
@@ -30,11 +28,11 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                <TextBlock Text="WeSplit" VerticalAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="White" Margin="30 0 0 0"></TextBlock>
+                <TextBlock Text="WeSplit" VerticalAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="White" Margin="30 0 0 0" MouseLeftButtonUp="mainWindow"></TextBlock>
             </Grid>
 
             <Grid Grid.Column="1">
-                <TextBlock Text="Địa danh" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563" MouseLeftButtonUp="placeWindow"></TextBlock>
+                <TextBlock Text="Địa danh" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563"></TextBlock>
             </Grid>
 
             <Grid Grid.Column="2">
@@ -55,15 +53,13 @@
 
         </Grid>
 
-
-        <!--PreviewMouseLeftButtonUp="listview_click"-->
         <Grid Grid.Row="1">
-            <ListView x:Name="tripdata" Width="500" Height="500"  ItemsSource="{Binding id}" >
+            <ListView x:Name="placedata" Width="900" Height="500"  ItemsSource="{Binding id}" >
                 <ListView.View >
-                    <GridView >
-                        <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Tên chuyến đi" Width="200"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding datetogo, StringFormat=\{0:dd-mm-yyyy\}}" Header="Ngày đi" Width="150"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding returndate, StringFormat=\{0:dd-mm-yyyy\}}" Header="Ngày về" Width="150"/>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding name}" Header="  Tên địa danh" Width="200"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding address}" Header="Địa chỉ" Width="300"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding discription}" Header="Mô tả" Width="400"/>
                     </GridView>
                 </ListView.View>
 
@@ -73,21 +69,7 @@
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
-
-            <!--<DockPanel>
-                <DataGrid x:Name="mydatagrid" DataGridCell.Selected="getId">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="id" Binding="{Binding id}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="name" Binding="{Binding name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="address" Binding="{Binding address}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="discription" Binding="{Binding discription}"></DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </DockPanel>-->
         </Grid>
-        
-        <Button Content="Button" HorizontalAlignment="Left" Height="90" Margin="766,197,0,0" Grid.Row="1" VerticalAlignment="Top" Width="175" Click="Button_Click"/>
 
     </Grid>
-
 </Window>
