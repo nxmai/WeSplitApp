@@ -53,36 +53,25 @@
 
         </Grid>
 
-        <Grid Grid.Row="1">
-            <ListView x:Name="mydatagrid">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Width="200" Header="Địa điểm"  >
 
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding id}"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Khoản chi" Width="98">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding name}"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Khoản chi" Width="98">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding address}"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+        <!--PreviewMouseLeftButtonUp="listview_click"-->
+        <Grid Grid.Row="1">
+            <ListView x:Name="tripdata" Width="500" Height="500"  ItemsSource="{Binding id}" >
+                <ListView.View >
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding name}" Header="  Tên chuyến đi" Width="200"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding datetogo}" Header="Ngày đi" Width="150"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding returndate}" Header="Ngày về" Width="150"/>
                     </GridView>
                 </ListView.View>
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem" BasedOn="{StaticResource MaterialDesignGridViewItem}">
+                        <EventSetter Event="MouseLeftButtonUp" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                    </Style>
+                </ListView.ItemContainerStyle>
             </ListView>
-            
+
             <!--<DockPanel>
                 <DataGrid x:Name="mydatagrid" DataGridCell.Selected="getId">
                     <DataGrid.Columns>

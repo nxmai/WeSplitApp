@@ -23,14 +23,16 @@ namespace WeSplit
     public partial class MainWindow : Window
     {
         wesplitEntities db = new wesplitEntities();
-        public static ListView datagrid;
+        public static ListView data;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            mydatagrid.ItemsSource = db.places.ToList();
-            datagrid = mydatagrid;
+            tripdata.ItemsSource = db.trips.ToList();
+            
+
+            data = tripdata;
 
             
 
@@ -45,8 +47,33 @@ namespace WeSplit
 
         private void getId(object sender, RoutedEventArgs e)
         {
-            int id = (mydatagrid.SelectedItem as place).id;
+            int id = (tripdata.SelectedItem as place).id;
             MessageBox.Show($"{id}");
         }
+
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //int id = (tripdata.SelectedItem as place).id;
+            //MessageBox.Show($"{id}");
+
+            //trip tmp = (sender as trip);
+
+            //var item = (sender as ListView).SelectedItem;
+            //if (item != null)
+            //{
+                
+            //}
+
+            var item = (sender as FrameworkElement).DataContext;
+            //messagebox.show((item as recipe).name);
+
+            //var detailscreen = new DetailScreen((item as Recipe).name);
+            var x = (item as trip).id;
+            MessageBox.Show($"{x}");
+        }
+
+        
+
+        
     }
 }
