@@ -12,6 +12,10 @@
         <ImageBrush  ImageSource="Data/Images/background.png" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Background>
 
+    <Window.Resources>
+        
+    </Window.Resources>
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -58,9 +62,10 @@
 
         <!--PreviewMouseLeftButtonUp="listview_click"-->
         <Grid Grid.Row="1">
-            <ListView x:Name="tripdata" Width="500" Height="500"  ItemsSource="{Binding id}" >
+            <ListView x:Name="tripdata" Width="500" Height="500"  ItemsSource="{Binding id}"  >
+                
                 <ListView.View >
-                    <GridView >
+                    <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Tên chuyến đi" Width="200"/>
                         <GridViewColumn DisplayMemberBinding="{Binding datetogo, StringFormat=\{0:dd-mm-yyyy\}}" Header="Ngày đi" Width="150"/>
                         <GridViewColumn DisplayMemberBinding="{Binding returndate, StringFormat=\{0:dd-mm-yyyy\}}" Header="Ngày về" Width="150"/>
@@ -71,6 +76,7 @@
                     <Style TargetType="ListViewItem" BasedOn="{StaticResource MaterialDesignGridViewItem}">
                         <EventSetter Event="MouseLeftButtonUp" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
                     </Style>
+
                 </ListView.ItemContainerStyle>
             </ListView>
 
@@ -85,7 +91,7 @@
                 </DataGrid>
             </DockPanel>-->
         </Grid>
-
+        
     </Grid>
 
 </Window>

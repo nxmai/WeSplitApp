@@ -22,7 +22,7 @@ namespace WeSplit
    
     public partial class MainWindow : Window
     {
-        wesplitEntities1 db = new wesplitEntities1();
+        wesplitEntities db = new wesplitEntities();
         public static ListView data;
 
         public MainWindow()
@@ -32,7 +32,6 @@ namespace WeSplit
             tripdata.ItemsSource = db.trips.ToList();
             data = tripdata;
         }
-
         
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

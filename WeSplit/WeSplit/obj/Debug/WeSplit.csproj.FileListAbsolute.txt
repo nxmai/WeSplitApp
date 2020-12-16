@@ -34,41 +34,39 @@ D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\App.baml
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\PlacesWindow.g.cs
 D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\WeSplitApp\WeSplit\WeSplit\obj\Debug\PlacesWindow.baml
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.csprojAssemblyReference.cache
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\DetailWindow.g.cs
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\MainWindow.g.cs
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\PlacesWindow.g.cs
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\App.g.cs
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit_MarkupCompile.cache
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit_MarkupCompile.lref
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.exe
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.pdb
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit_Content.g.cs
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\WeSplit.exe.config
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\WeSplit.exe
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\WeSplit.pdb
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.dll
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.SqlServer.dll
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.dll
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.Wpf.dll
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignColors.dll
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignThemes.Wpf.dll
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.xml
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.SqlServer.xml
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.pdb
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.xml
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.Wpf.pdb
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.Wpf.xml
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignColors.pdb
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignThemes.Wpf.pdb
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignThemes.Wpf.xml
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\App.baml
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\DetailWindow.baml
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\MainWindow.baml
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\PlacesWindow.baml
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.g.resources
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.Properties.Resources.resources
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.csproj.GenerateResource.cache
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.csproj.CoreCompileInputs.cache
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.csproj.CopyComplete
-D:\Môn  học\Năm 3\Học Kỳ 1\Lập Trình Windows\weSlpit\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.csproj.Fody.CopyLocal.cache
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\WeSplit.exe.config
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\WeSplit.exe
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\WeSplit.pdb
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.dll
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.SqlServer.dll
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.dll
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.Wpf.dll
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignColors.dll
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.xml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\EntityFramework.SqlServer.xml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.pdb
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.xml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.Wpf.pdb
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\LiveCharts.Wpf.xml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignColors.pdb
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.csprojAssemblyReference.cache
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\DetailWindow.g.cs
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\MainWindow.g.cs
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\PlacesWindow.g.cs
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\App.g.cs
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit_Content.g.cs
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit_MarkupCompile.cache
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit_MarkupCompile.lref
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\App.baml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\DetailWindow.baml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\MainWindow.baml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\PlacesWindow.baml
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.g.resources
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.Properties.Resources.resources
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.csproj.GenerateResource.cache
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.csproj.CopyComplete
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.exe
+D:\Xuan Mai\HCMUS\5\Windows\Project2\Source\clone 1\WeSplitApp\WeSplit\WeSplit\obj\Debug\WeSplit.pdb

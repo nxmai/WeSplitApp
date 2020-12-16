@@ -42,14 +42,14 @@ namespace WeSplit
     }
     public partial class DetailWindow : Window
     {
-        wesplitEntities1 db = new wesplitEntities1();
+        wesplitEntities db = new wesplitEntities();
         finalSummary selectedTrip = new finalSummary();
         List<member> listMember = new List<member>();
         List<route> listRoute = new List<route>();
         List<restMoney> listRestMoney = new List<restMoney>();
         List<image> listImage = new List<image>();
 
-        
+
         public DetailWindow(int id)
         {
             InitializeComponent();
@@ -59,7 +59,7 @@ namespace WeSplit
 
             customizeWindow();
 
-            
+
         }
 
 
@@ -81,8 +81,8 @@ namespace WeSplit
                 {
                     Title = tempMember.name,
                     Values = new ChartValues<float> { (int)tempMember.collectedmoney },
-                 
-                }) ; 
+
+                });
 
             }
 
@@ -109,15 +109,15 @@ namespace WeSplit
 
         private void tienThuPie_DataClick(object sender, ChartPoint chartPoint)
         {
-            
-                var chart = chartPoint.ChartView as PieChart;
-                 foreach (PieSeries series in chart.Series)
-                 {
-                     series.PushOut = 0;
-                 }
-                 var selectedSeries = chartPoint.SeriesView as PieSeries;
+
+            var chart = chartPoint.ChartView as PieChart;
+            foreach (PieSeries series in chart.Series)
+            {
+                series.PushOut = 0;
+            }
+            var selectedSeries = chartPoint.SeriesView as PieSeries;
             selectedSeries.PushOut = 15;
-            
+
         }
 
 
@@ -127,14 +127,14 @@ namespace WeSplit
             listRoute = db.routes.Where(x => x.idtrip == id).ToList();
             listMember = db.members.Where(x => x.idtrip == id).ToList();
 
-            
+
             //MessageBox.Show(db.members.Where(x => x.idtrip == id).Count().ToString());
         }
 
         void createDataSelectedTrip(int id)
         {
             selectedTrip.id = id;
-            
+
             var temp = db.trips.Where(x => x.id == id).First();
 
             selectedTrip.name = temp.name;
@@ -169,7 +169,7 @@ namespace WeSplit
             float totalCost = selectedTrip.totalCostMoney;
             float amountMember = listMember.Count();
             float costForEachMember = totalCost / amountMember;
-            foreach(var tempMember in listMember)
+            foreach (var tempMember in listMember)
             {
                 restMoney temp = new restMoney();
                 temp.name = tempMember.name;
@@ -182,10 +182,10 @@ namespace WeSplit
         void createListImage(int id)
         {
             listImage = db.images.Where(x => x.idtrip == id).ToList();
-           // MessageBox.Show(listImage.Count().ToString());
+            // MessageBox.Show(listImage.Count().ToString());
         }
 
-        void CreateData (int id)
+        void CreateData(int id)
         {
             loadDataFromDB(id);
             createDataSelectedTrip(id);
@@ -209,13 +209,13 @@ namespace WeSplit
             costTotalTxt.Text = selectedTrip.totalCostMoney.ToString();
             dateGoTXT.Text = selectedTrip.datetogo.ToString();
             dateReturnTXT.Text = selectedTrip.returndate.ToString();
-           
-            var uri = new Uri(getFolder()+$"{selectedTrip.thumbnail}", UriKind.Absolute);
+
+            var uri = new Uri(getFolder() + $"{selectedTrip.thumbnail}", UriKind.Absolute);
             var bitmap = new BitmapImage(uri);
             thumbnailImage.ImageSource = bitmap;
 
             createCarousel();
-       
+
             customizePieChart();
 
             if (selectedTrip.status == true)
@@ -235,12 +235,12 @@ namespace WeSplit
             folder += $"/";
             return folder;
         }
-        
+
         void createCarousel()
         {
             foreach (var tempImage in listImage)
             {
-                
+
                 var border = new Border();
                 border.CornerRadius = new CornerRadius(15);
 
@@ -248,7 +248,7 @@ namespace WeSplit
                 var uri = new Uri(getFolder() + $"{tempImage.path}", UriKind.Absolute);
                 var bitmap = new BitmapImage(uri);
                 temp.ImageSource = bitmap;
-                
+
 
                 border.Background = temp;
                 border.Width = 100;
@@ -258,7 +258,7 @@ namespace WeSplit
 
                 carousel.Children.Add(border);
             }
-            
+
         }
 
         private void EndClick(object sender, RoutedEventArgs e)
