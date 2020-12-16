@@ -85,8 +85,6 @@
                 </DataGrid>
             </DockPanel>-->
         </Grid>
-        
-        <Button Content="Button" HorizontalAlignment="Left" Height="90" Margin="766,197,0,0" Grid.Row="1" VerticalAlignment="Top" Width="175" Click="Button_Click"/>
 
     </Grid>
 

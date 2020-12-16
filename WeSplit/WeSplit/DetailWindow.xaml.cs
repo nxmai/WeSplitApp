@@ -19,66 +19,49 @@ namespace WeSplit
     /// <summary>
     /// Interaction logic for DetailWindow.xaml
     /// </summary>
+    /// 
+    public class restMoney
+    {
+        public string name { get; set; }
+
+        public float rest { get; set; }
+
+    }
+
+    public class finalSummary
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public int totalCollectedMoney { get; set; }
+        public int totalCostMoney { get; set; }
+        public string thumbnail { get; set; }
+        public Nullable<System.DateTime> datetogo { get; set; }
+        public Nullable<System.DateTime> returndate { get; set; }
+
+        public bool status { get; set; }
+    }
     public partial class DetailWindow : Window
     {
-        public class chuyenDi
-        {
-            string ngayDi { get; set; }
-            string ngayVe { get; set; }
-            string tenChuyenDi { get; set; }
+        wesplitEntities1 db = new wesplitEntities1();
+        finalSummary selectedTrip = new finalSummary();
+        List<member> listMember = new List<member>();
+        List<route> listRoute = new List<route>();
+        List<restMoney> listRestMoney = new List<restMoney>();
+        List<image> listImage = new List<image>();
 
-        }
-
-        public class thanhVien
-        {
-            public string hoTen { get; set; }
-            public string sdt { get; set; }
-            public string tienThu { get; set; }
-            public string conLai { get; set; }
-
-        }
-
-        public class lichTrinh
-        {
-            public string diaDiem { get; set; }
-            public string tienChi { get; set; }
-        }
-
-        List<thanhVien> listThanhVien = new List<thanhVien>();
-        List<lichTrinh> listLichTrinh = new List<lichTrinh>();
-        public DetailWindow()
+        
+        public DetailWindow(int id)
         {
             InitializeComponent();
 
-            getData();
+            CreateData(id);
+            BidingData();
 
-            lvDiaDiem.ItemsSource = listLichTrinh;
+            customizeWindow();
 
-            lvTienConLai.ItemsSource = listThanhVien;
-
-            lvTienThu.ItemsSource = listThanhVien;
-
-         
-
-            customizePieChart();
+            
         }
 
-        void getData()
-        {
-            listThanhVien.Add(new thanhVien() { hoTen = "duong boi long", sdt = "0976942124", tienThu = "1000000", conLai = "2000000" });
-            listThanhVien.Add(new thanhVien() { hoTen = "duong boi long", sdt = "0976942124", tienThu = "1000000", conLai = "2000000" });
-            listThanhVien.Add(new thanhVien() { hoTen = "duong boi long", sdt = "0976942124", tienThu = "1000000", conLai = "2000000" });
-            listThanhVien.Add(new thanhVien() { hoTen = "duong boi long", sdt = "0976942124", tienThu = "1000000", conLai = "2000000" });
-            listThanhVien.Add(new thanhVien() { hoTen = "BO BO", sdt = "0976942124", tienThu = "1000000", conLai = "2000000" });
-            listThanhVien.Add(new thanhVien() { hoTen = "winter", sdt = "0976942124", tienThu = "1000000", conLai = "2000000" });
-            listThanhVien.Add(new thanhVien() { hoTen = "winter cuteeeee", sdt = "0976942124", tienThu = "1000000", conLai = "2000000" });
-
-
-            listLichTrinh.Add(new lichTrinh() { diaDiem = "tien giang", tienChi = "1000000" });
-            listLichTrinh.Add(new lichTrinh() { diaDiem = "can tho", tienChi = "1000000" });
-            listLichTrinh.Add(new lichTrinh() { diaDiem = "thanh pho ho chi minh", tienChi = "1000000"});
-
-        }
 
         void customizePieChart()
         {
@@ -92,15 +75,14 @@ namespace WeSplit
             //Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
             SeriesCollection piechartData = new SeriesCollection();
 
-            foreach (thanhVien tempThanhVien in listThanhVien)
+            foreach (member tempMember in listMember)
             {
                 piechartData.Add(new PieSeries
                 {
-                    Title = tempThanhVien.hoTen,
-                    Values = new ChartValues<float> { float.Parse(tempThanhVien.tienThu) },
-                    // DataLabels = true
-                    // LabelPoint = labelPoint
-                });
+                    Title = tempMember.name,
+                    Values = new ChartValues<float> { (int)tempMember.collectedmoney },
+                 
+                }) ; 
 
             }
 
@@ -110,12 +92,12 @@ namespace WeSplit
         {
             SeriesCollection piechartData = new SeriesCollection();
 
-            foreach (lichTrinh tempLichTrinh in listLichTrinh)
+            foreach (route tempLichTrinh in listRoute)
             {
                 piechartData.Add(new PieSeries
                 {
-                    Title = tempLichTrinh.diaDiem,
-                    Values = new ChartValues<float> { float.Parse(tempLichTrinh.tienChi) },
+                    Title = tempLichTrinh.place,
+                    Values = new ChartValues<float> { float.Parse(tempLichTrinh.cost.ToString()) },
                     // DataLabels = true
                     // LabelPoint = labelPoint
                 });
@@ -138,21 +120,177 @@ namespace WeSplit
             
         }
 
-        void createListImage()
+
+        void loadDataFromDB(int id)
         {
-            var grid_temp = new Grid();
-            var boder = new Border();
-            boder.CornerRadius = new CornerRadius(15);
-            var temp = new ImageBrush();
-            boder.Width = 110;
-            boder.Height = 110;
-            grid_temp.Margin = new Thickness(2);
-            listImageView.Children.Add(grid_temp);
+
+            listRoute = db.routes.Where(x => x.idtrip == id).ToList();
+            listMember = db.members.Where(x => x.idtrip == id).ToList();
+
+            
+            //MessageBox.Show(db.members.Where(x => x.idtrip == id).Count().ToString());
         }
 
+        void createDataSelectedTrip(int id)
+        {
+            selectedTrip.id = id;
+            
+            var temp = db.trips.Where(x => x.id == id).First();
+
+            selectedTrip.name = temp.name;
+            selectedTrip.returndate = temp.returndate;
+            selectedTrip.datetogo = temp.datetogo;
+            selectedTrip.thumbnail = temp.thumbnail;
+            selectedTrip.status = (bool)temp.isfinish;
+
+            int totalCost = 0;
+            foreach (var tempPlace in listRoute)
+            {
+                if (tempPlace.cost != null)
+                {
+                    totalCost += (int)tempPlace.cost;
+                }
+            }
+            selectedTrip.totalCostMoney = totalCost;
+
+            int totalCollected = 0;
+            foreach (var tempMember in listMember)
+            {
+                if (tempMember.collectedmoney != null)
+                {
+                    totalCollected += (int)tempMember.collectedmoney;
+                }
+            }
+            selectedTrip.totalCollectedMoney = totalCollected;
+        }
+
+        void CreateListRestMoney()
+        {
+            float totalCost = selectedTrip.totalCostMoney;
+            float amountMember = listMember.Count();
+            float costForEachMember = totalCost / amountMember;
+            foreach(var tempMember in listMember)
+            {
+                restMoney temp = new restMoney();
+                temp.name = tempMember.name;
+                temp.rest = costForEachMember - (int)tempMember.collectedmoney;
+                listRestMoney.Add(temp);
+            }
+
+        }
+
+        void createListImage(int id)
+        {
+            listImage = db.images.Where(x => x.idtrip == id).ToList();
+           // MessageBox.Show(listImage.Count().ToString());
+        }
+
+        void CreateData (int id)
+        {
+            loadDataFromDB(id);
+            createDataSelectedTrip(id);
+            CreateListRestMoney();
+            createListImage(id);
+        }
+
+        void BidingData()
+        {
+            lvDiaDiem.ItemsSource = listRoute;
+
+            lvTienConLai.ItemsSource = listRestMoney;
+
+            lvTienThu.ItemsSource = listMember;
+        }
+
+        void customizeWindow()
+        {
+            journeyName.Text = selectedTrip.name;
+            collectedTotalTxt.Text = selectedTrip.totalCollectedMoney.ToString();
+            costTotalTxt.Text = selectedTrip.totalCostMoney.ToString();
+            dateGoTXT.Text = selectedTrip.datetogo.ToString();
+            dateReturnTXT.Text = selectedTrip.returndate.ToString();
+           
+            var uri = new Uri(getFolder()+$"{selectedTrip.thumbnail}", UriKind.Absolute);
+            var bitmap = new BitmapImage(uri);
+            thumbnailImage.ImageSource = bitmap;
+
+            createCarousel();
+       
+            customizePieChart();
+
+            if (selectedTrip.status == true)
+            {
+                borderButtonEnd.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                endTXT.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        string getFolder()
+        {
+            string folder = "";
+            folder = AppDomain.CurrentDomain.BaseDirectory;
+            folder += $"/";
+            return folder;
+        }
         
+        void createCarousel()
+        {
+            foreach (var tempImage in listImage)
+            {
+                
+                var border = new Border();
+                border.CornerRadius = new CornerRadius(15);
+
+                var temp = new ImageBrush();
+                var uri = new Uri(getFolder() + $"{tempImage.path}", UriKind.Absolute);
+                var bitmap = new BitmapImage(uri);
+                temp.ImageSource = bitmap;
+                
+
+                border.Background = temp;
+                border.Width = 100;
+                border.Height = 90;
+
+                border.Margin = new Thickness(0, 0, 3, 0);
+
+                carousel.Children.Add(border);
+            }
+            
+        }
 
         private void EndClick(object sender, RoutedEventArgs e)
+        {
+            var select = db.trips.Where(x => x.id == selectedTrip.id).SingleOrDefault();
+            select.isfinish = true;
+            db.SaveChanges();
+            borderButtonEnd.Visibility = Visibility.Collapsed;
+            endTXT.Visibility = Visibility.Visible;
+        }
+
+        private void addImageClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void addRouteClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void addMemberClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void updateDateGoClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void updateReturnDateClick(object sender, RoutedEventArgs e)
         {
 
         }

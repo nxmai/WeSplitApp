@@ -44,16 +44,6 @@
           <Property Name="cost" Type="int" />
           <Property Name="idtrip" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="trip">
           <Key>
             <PropertyRef Name="id" />
@@ -121,7 +111,6 @@
           <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="places" EntityType="Self.places" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="route" EntityType="Self.route" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="trip" EntityType="Self.trip" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_image" Association="Self.fk_image">
             <End Role="trip" EntitySet="trip" />
@@ -187,16 +176,6 @@
           <Property Name="cost" Type="Int32" />
           <Property Name="idtrip" Type="Int32" Nullable="false" />
           <NavigationProperty Name="trip" Relationship="Self.fk_route" FromRole="route" ToRole="trip" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="trip">
           <Key>
@@ -264,12 +243,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="wesplitEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="wesplitEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="images" EntityType="Self.image" />
           <EntitySet Name="members" EntityType="Self.member" />
           <EntitySet Name="places" EntityType="Self.place" />
           <EntitySet Name="routes" EntityType="Self.route" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="trips" EntityType="Self.trip" />
           <AssociationSet Name="fk_image" Association="Self.fk_image">
             <End Role="trip" EntitySet="trips" />
@@ -293,7 +271,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="wesplitModelStoreContainer" CdmEntityContainer="wesplitEntities">
+        <EntityContainerMapping StorageEntityContainer="wesplitModelStoreContainer" CdmEntityContainer="wesplitEntities1">
           <EntitySetMapping Name="images">
             <EntityTypeMapping TypeName="wesplitModel.image">
               <MappingFragment StoreEntitySet="image">
@@ -331,17 +309,6 @@
                 <ScalarProperty Name="place" ColumnName="place" />
                 <ScalarProperty Name="cost" ColumnName="cost" />
                 <ScalarProperty Name="idtrip" ColumnName="idtrip" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="wesplitModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

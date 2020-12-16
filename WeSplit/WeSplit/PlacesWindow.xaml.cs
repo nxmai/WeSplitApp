@@ -19,7 +19,7 @@ namespace WeSplit
     /// </summary>
     public partial class PlacesWindow : Window
     {
-        wesplitEntities db = new wesplitEntities();
+        wesplitEntities1 db = new wesplitEntities1();
         public static ListView data;
         public PlacesWindow()
         {
