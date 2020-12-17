@@ -27,9 +27,9 @@
             <Setter Property="FontFamily" Value="Segoe UI" />
         </Style>
     </Window.Resources>
-    
+
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition/>
@@ -81,27 +81,29 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="10">
                 <StackPanel>
-                    <Border CornerRadius="20" Background="Yellow" Margin="0,0,0,20">
-                        <Image Name="thumbnailImage" Width="auto" Height="200"></Image>
+                    <Border x:Name="borderImageThumnail" CornerRadius="20" BorderBrush="White" BorderThickness="2" Width="280" Height="200" Margin="0,0,0,20">
 
+                        <Border.Background>
+                            <ImageBrush x:Name="thumbnailImage" RenderOptions.BitmapScalingMode="NearestNeighbor"  />
+                        </Border.Background>
                     </Border>
-                 
-                    <ListView  x:Name="lvDiaDiem" Height="auto" Width="auto" HorizontalAlignment="Center">
+
+                    <ListView  x:Name="lvDiaDiem" Height="282" Width="auto" HorizontalAlignment="Center" Margin="0,0,0.333,0">
                         <ListView.View>
                             <GridView>
-                                
+
                                 <GridViewColumn Width="200" Header="Địa điểm"  >
-                                    
+
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding diaDiem}"></TextBlock>
+                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding place}"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn Header="Khoản chi" Width="98">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding tienChi}"></TextBlock>
+                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding cost}"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -112,55 +114,56 @@
                     </ListView>
                 </StackPanel>
 
-             
+
             </StackPanel>
-            
-            
+
+
             <StackPanel Grid.Column="1" Margin="10">
                 <StackPanel >
-                    <TextBlock Name="journeyName" FontSize="20"></TextBlock>
+                    <TextBlock Name="journeyName" FontSize="30" Height="45" Foreground="HotPink" FontWeight="Heavy" HorizontalAlignment="Center"></TextBlock>
                     <StackPanel Orientation="Horizontal" Height="30">
                         <TextBlock FontSize="16" FontWeight="Bold">Ngày đi:</TextBlock>
-                        <Button></Button>
-                        <TextBlock x:Name="ngayDitxt" FontSize="16" FontWeight="Medium" Foreground="Gray"></TextBlock>
+                        <Button Margin="5,0,5,-2" Width="20" Height="20" VerticalAlignment="Top" Click="updateDateGoClick"></Button>
+                        <TextBlock x:Name="dateGoTXT" FontSize="16" FontWeight="Medium" Foreground="Gray" ></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Height="30">
                         <TextBlock FontSize="16" FontWeight="Bold">Ngày về:</TextBlock>
-                        <Button></Button>
-                        <TextBlock x:Name="ngayVeTxt" FontSize="16" FontWeight="Medium" Foreground="Gray"></TextBlock>
+                        <Button Margin="5,0,5,0" VerticalAlignment="Top" Click="updateReturnDateClick" Width="20" Height="20"></Button>
+                        <TextBlock x:Name="dateReturnTXT" FontSize="16" FontWeight="Medium" Foreground="Gray"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Height="30">
-                        <TextBlock FontSize="16" FontWeight="Bold" Foreground="Blue">Tổng thu:</TextBlock>
-                        <TextBlock x:Name="tongThuTxt" FontSize="16" FontWeight="Medium" Foreground="DeepPink"></TextBlock>
+                        <TextBlock FontSize="16"  VerticalAlignment="Bottom" FontWeight="Bold" Width="100" Foreground="Blue">Tổng thu:</TextBlock>
+                        <TextBlock x:Name="collectedTotalTxt" VerticalAlignment="Bottom" FontSize="20"  FontWeight="Bold" Foreground="DeepPink"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Height="30">
-                        <TextBlock  FontSize="16" FontWeight="Bold" Foreground="Blue">Tổng chi:</TextBlock>
-                        <TextBlock x:Name="tongChiTxt" FontSize="16" FontWeight="Medium" Foreground="DeepPink"></TextBlock>
+                        <TextBlock  FontSize="16" VerticalAlignment="Bottom" Width="100" FontWeight="Bold" Foreground="Blue">Tổng chi:</TextBlock>
+                        <TextBlock x:Name="costTotalTxt"  VerticalAlignment="Bottom" FontSize="20"  FontWeight="Bold" Foreground="DeepPink"></TextBlock>
                     </StackPanel>
-                    <ScrollViewer Height="120" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                        <StackPanel Name="listImageView"></StackPanel>
+                    <Button Width="20" Height="20" HorizontalAlignment="Right" Click="addImageClick"></Button>
+                    <ScrollViewer Margin="0,0,0,15" Height="130" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Name="carousel" Height="120" Orientation="Horizontal"></StackPanel>
                     </ScrollViewer>
-                    <ListView x:Name="lvTienThu" Width="auto" HorizontalAlignment="Center">
+                    <ListView x:Name="lvTienThu" Width="auto" Height="174" HorizontalAlignment="Center" Margin="67,0,67.667,0">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Họ tên" >
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding hoTen}"></TextBlock>
+                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding name}"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn Header="sđt" >
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding sdt}"></TextBlock>
+                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding phonenumber}"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn Header="Tiền thu">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding tienThu}"></TextBlock>
+                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding collectedmoney}"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -168,16 +171,17 @@
 
                             </GridView>
                         </ListView.View>
-                       
+
                     </ListView>
                 </StackPanel>
             </StackPanel>
-           
+
             <StackPanel Grid.Column="2" Margin="10">
                 <Border CornerRadius="20" Width="300" Height="40" Background="CornflowerBlue" Name="borderButtonEnd">
                     <Button VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Background="Transparent" BorderThickness="0"  Width="300" Height="40" Click="EndClick">Kết thúc chuyến đi</Button>
                 </Border>
-                
+                <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" x:Name="endTXT" Background="Yellow">Chuyến đi đã kết thúc</TextBlock>
+
                 <StackPanel Orientation="Horizontal" Height="200">
                     <StackPanel>
                         <lvc:PieChart Height="180" Name="tienThuPie" Width="150" Hoverable="True" DataClick="tienThuPie_DataClick" >
@@ -191,22 +195,22 @@
                         </lvc:PieChart>
                         <TextBlock HorizontalAlignment="Center"  Foreground="Blue" FontSize="14" FontWeight="Bold">Bảng Chi tiêu</TextBlock>
                     </StackPanel>
-                    
+
                 </StackPanel>
-                <ListView x:Name="lvTienConLai" Margin="0,20,0,0">
+                <ListView x:Name="lvTienConLai" Margin="0,20,0.333,0" Height="216">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Họ tên" Width="200">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding hoTen}"></TextBlock>
+                                        <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding name}"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Còn lại" Width="98">
+                            <GridViewColumn Header="Cần trả thêm" Width="98">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock TextAlignment="Center"  FontSize="14" FontWeight="Medium" Text="{Binding conLai}"></TextBlock>
+                                        <TextBlock TextAlignment="Center"  FontSize="14" FontWeight="Medium" Text="{Binding rest}"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -214,7 +218,7 @@
                     </ListView.View>
                 </ListView>
             </StackPanel>
-            
+
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -224,21 +228,22 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <TextBlock HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Danh sách lộ trình</TextBlock>
-                <Button></Button>
+
+                <TextBlock TextAlignment="Right" Width="230" FontSize="16" FontWeight="Bold" VerticalAlignment="Center">Danh sách lộ trình</TextBlock>
+                <Button Margin="10,0,0,0" Width="20" Height="20" Click="addRouteClick"></Button>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <TextBlock HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Danh Sách thành viên</TextBlock>
-                <Button></Button>
+                <TextBlock TextAlignment="Right" VerticalAlignment="Center" Width="230"  FontSize="16" FontWeight="Bold">Danh Sách thành viên</TextBlock>
+                <Button Margin="10,0,0,0" Width="20" Height="20" Click="addMemberClick" >
+
+                </Button>
             </StackPanel>
 
-            <StackPanel Grid.Column="2" Orientation="Horizontal">
-                <TextBlock HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Tổng kết</TextBlock>
-                <Button></Button>
-            </StackPanel>
+            <TextBlock Grid.Column="2" VerticalAlignment="Center" TextAlignment="Center" FontSize="16" FontWeight="Bold">Tổng kết</TextBlock>
 
-            
+
+
 
         </Grid>
 
