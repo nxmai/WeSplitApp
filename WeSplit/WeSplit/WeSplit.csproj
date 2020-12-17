@@ -78,6 +78,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddJourney.xaml.cs">
+      <DependentUpon>AddJourney.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,6 +107,10 @@
     <Compile Include="trip.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Page Include="AddJourney.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DetailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
