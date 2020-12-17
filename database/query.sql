@@ -91,6 +91,8 @@ insert into trip values ('1', N'Tắm biển mùa đông', '1', 'Data/fakedata/v
 insert into trip values ('2', N'Tắm biển mùa hè', '1', 'Data/fakedata/vungtau_thumbnail.jpg', '1/6/2020', '3/6/2020', 1, null, null);
 insert into trip values ('3', N'Du lịch Đà Lạt', '2', 'Data/fakedata/dalat_thumbnail.jpg', '5/7/2020', '12/7/2020', 1, null, null);
 insert into trip values ('4', N'Đi Đà Nẵng', '3', 'Data/fakedata/danang_thumbnail.jpg', '1/6/2019', '5/6/2019', 1, null, null);
+insert into trip values ('5', N'Đà Lạt chưa về', '2', 'Data/fakedata/dalat_thumbnail.jpg', '1/6/2021', '5/6/2021', 0, null, null);
+
 
 insert into image values ('1', 'Data/fakedata/vungtau1.jpg', '1');
 insert into image values ('2', 'Data/fakedata/vungtau2.jpg', '1');
@@ -107,6 +109,11 @@ insert into image values ('9', 'Data/fakedata/dalat3.jpg', '3');
 insert into image values ('10', 'Data/fakedata/danang1.jpg', '4');
 insert into image values ('11', 'Data/fakedata/danang2.jpg', '4');
 insert into image values ('12', 'Data/fakedata/danang3.jpg', '4');
+
+insert into image values ('13', 'Data/fakedata/dalat1.jpg', '5');
+insert into image values ('14', 'Data/fakedata/dalat2.jpg', '5');
+insert into image values ('15', 'Data/fakedata/dalat3.jpg', '5');
+
 
 
 insert into route values ('1', N'Đại học Khoa học tự nhiên', 50000, '1');
@@ -129,6 +136,12 @@ insert into route values ('14', N'Làng đại học 4', 710000, '4');
 insert into route values ('15', N'Đèo Hải Vân', 1100000, '4');
 insert into route values ('16', N'Đà Nẵng', 120000, '4');
 
+insert into route values ('13', N'Đại học Khoa học tự nhiên 4', 150000, '5');
+insert into route values ('14', N'Làng đại học 5', 710000, '5');
+insert into route values ('15', N'Đèo Hải Vân 5', 1100000, '5');
+insert into route values ('16', N'Đà Lat 5', 120000, '5');
+
+
 
 insert into member values ('1', N'Nguyễn Xuân Mai', '012345678', 120000, '1');
 insert into member values ('2', N'Khưu Thùy Kỳ', '152637934', 240000, '1');
@@ -147,7 +160,11 @@ insert into member values ('11', N'Khưu Thùy Kỳ 4', '152637934', 240000, '4'
 insert into member values ('12', N'Dương Bội Long 4', '019826421', 300000, '4');
 insert into member values ('13', N'Nhựt Nam', '2403294', 30000, '4');
 
+insert into member values ('14', N'Nguyễn Thị Lan 5', '019826421', 300000, '5');
+insert into member values ('15', N'Lê Văn An 5', '2403294', 30000, '5');
+
 
  select * from trip join member on trip.id = member.idtrip;
 
  select * from trip join places on trip.idplace = places.id;
+ 

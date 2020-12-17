@@ -26,13 +26,16 @@ namespace WeSplit
         wesplitEntities db = new wesplitEntities();
         public static ListView data;
 
+        public List<trip> NotFinishTrip = new List<trip>();
         public List<trip> allTrip = new List<trip>();
         public MainWindow()
         {
             InitializeComponent();
             
             allTrip = db.trips.ToList();
-            tripdata.ItemsSource = allTrip;
+            NotFinishTrip.Add(allTrip.Find(x => x.isfinish == false));
+
+            tripdata.ItemsSource = NotFinishTrip;
             data = tripdata;
         }
         
@@ -78,25 +81,11 @@ namespace WeSplit
             }
             return str;
         }
-
-        public List<trip> searchInList(List<trip> trip)
-        {
-            List<trip> res = new List<trip>();
-
-            for (int i = 0; i < allTrip.Count; i++)
-            {
-                if (filterVietNameseTone(allTrip[i].name).ToUpper().Contains(filterVietNameseTone(searchTextBox.Text.ToUpper())))
-                    res.Add(trip[i]);
-            }
-
-            return res;
-        }
-
+        
         private void search_Press(object sender, KeyEventArgs e)
         {
             string connectionString = "Server=LAPTOP-G9G0JOGE;Database=wesplit;Trusted_Connection=True;";
             
-            //tripdata.ItemsSource = searchInList(allTrip);
             tripdata.ItemsSource = SearchByMemberName(connectionString);
         }
 
@@ -120,7 +109,7 @@ namespace WeSplit
 
                         if (filterVietNameseTone(placeName).ToUpper().Contains(filterVietNameseTone(searchTextBox.Text.ToUpper())))
                         {
-                            res.Add(allTrip.Find(x => x.id == index));
+                            res.Add(NotFinishTrip.Find(x => x.id == index));
                         }
                     }
                 }
@@ -149,9 +138,9 @@ namespace WeSplit
 
                         if (filterVietNameseTone(memberName).ToUpper().Contains(filterVietNameseTone(searchTextBox.Text.ToUpper())))
                         {
-                            if (!res.Contains(allTrip.Find(x => x.id == index)))
+                            if (!res.Contains(NotFinishTrip.Find(x => x.id == index)))
                             {
-                                res.Add(allTrip.Find(x => x.id == index));
+                                res.Add(NotFinishTrip.Find(x => x.id == index));
                             }
                         }
                     }
