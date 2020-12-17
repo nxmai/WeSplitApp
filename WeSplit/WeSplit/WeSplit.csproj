@@ -183,6 +183,18 @@
     <Resource Include="Data\Images\background.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Data\fakedata\dalat1.jpg" />
+    <Resource Include="Data\fakedata\dalat2.jpg" />
+    <Resource Include="Data\fakedata\dalat3.jpg" />
+    <Resource Include="Data\fakedata\dalat_thumbnail.jpg" />
+    <Resource Include="Data\fakedata\danang1.jpg" />
+    <Resource Include="Data\fakedata\danang2.jpg" />
+    <Resource Include="Data\fakedata\danang3.jpg" />
+    <Resource Include="Data\fakedata\danang_thumbnail.jpg" />
+    <Resource Include="Data\fakedata\vungtau1.jpg" />
+    <Resource Include="Data\fakedata\vungtau2.jpg" />
+    <Resource Include="Data\fakedata\vungtau3.jpg" />
+    <Resource Include="Data\fakedata\vungtau_thumbnail.jpg" />
     <Content Include="EntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityModel.Context.cs</LastGenOutput>
