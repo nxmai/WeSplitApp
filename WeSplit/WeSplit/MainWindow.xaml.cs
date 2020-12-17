@@ -37,7 +37,14 @@ namespace WeSplit
             InitializeComponent();
 
             allTrip = db.trips.ToList();
-            NotFinishTrip.Add(allTrip.Find(x => x.isfinish == false));
+            //NotFinishTrip.Add(allTrip.Find(x => x.isfinish == false));
+            for(int i = 0; i < allTrip.Count(); i++)
+            {
+                if(allTrip[i].isfinish == false)
+                {
+                    NotFinishTrip.Add(allTrip[i]);
+                }
+            }
 
             tripdata.ItemsSource = NotFinishTrip;
             data = tripdata;

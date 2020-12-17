@@ -87,11 +87,15 @@ insert into places values ('2', N'Đà Lạt', N'Tỉnh Lâm Đồng', N'Đà L�
 insert into places values ('3', N'Đà Nẵng', N'Tỉnh Đà Nẵng', N'Đà Nẵng là một thành phố trực thuộc trung ương, nằm trong vùng Duyên hải Nam Trung Bộ Việt Nam, là thành phố trung tâm và lớn nhất khu vực miền Trung - Tây Nguyên.');
 
 
-insert into trip values ('1', N'Tắm biển mùa đông', '1', 'Data/fakedata/vungtau_thumbnail.jpg', '1/6/2019', '5/6/2019', 0, null, null);
+insert into trip values ('1', N'Tắm biển mùa đông', '1', 'Data/fakedata/vungtau_thumbnail.jpg', '1/6/2019', '5/6/2019', 1, null, null);
 insert into trip values ('2', N'Tắm biển mùa hè', '1', 'Data/fakedata/vungtau_thumbnail.jpg', '1/6/2020', '3/6/2020', 1, null, null);
 insert into trip values ('3', N'Du lịch Đà Lạt', '2', 'Data/fakedata/dalat_thumbnail.jpg', '5/7/2020', '12/7/2020', 1, null, null);
 insert into trip values ('4', N'Đi Đà Nẵng', '3', 'Data/fakedata/danang_thumbnail.jpg', '1/6/2019', '5/6/2019', 1, null, null);
 insert into trip values ('5', N'Đà Lạt chưa về', '2', 'Data/fakedata/dalat_thumbnail.jpg', '1/6/2021', '5/6/2021', 0, null, null);
+
+insert into trip values ('6', N'Đà Nẵng chưa về', '3', 'Data/fakedata/danang_thumbnail.jpg', '12/1/2020', '12/26/2020', 0, null, null);
+insert into trip values ('7', N'Vũng Tàu chưa về', '1', 'Data/fakedata/vungtau_thumbnail.jpg', '12/1/2020', '12/20/2020', 0, null, null);
+
 
 
 insert into image values ('1', 'Data/fakedata/vungtau1.jpg', '1');
@@ -113,6 +117,16 @@ insert into image values ('12', 'Data/fakedata/danang3.jpg', '4');
 insert into image values ('13', 'Data/fakedata/dalat1.jpg', '5');
 insert into image values ('14', 'Data/fakedata/dalat2.jpg', '5');
 insert into image values ('15', 'Data/fakedata/dalat3.jpg', '5');
+
+
+insert into image values ('16', 'Data/fakedata/danang1.jpg', '6');
+insert into image values ('17', 'Data/fakedata/danang2.jpg', '6');
+insert into image values ('18', 'Data/fakedata/danang3.jpg', '6');
+
+
+insert into image values ('19', 'Data/fakedata/vungtau1.jpg', '7');
+insert into image values ('20', 'Data/fakedata/vungtau2.jpg', '7');
+insert into image values ('21', 'Data/fakedata/vungtau3.jpg', '7');
 
 
 
@@ -142,6 +156,13 @@ insert into route values ('15', N'Đèo Hải Vân 5', 1100000, '5');
 insert into route values ('16', N'Đà Lat 5', 120000, '5');
 
 
+insert into route values ('17', N'Đèo Hải Vân 6', 1100000, '6');
+insert into route values ('18', N'DN 6', 120000, '6');
+
+
+insert into route values ('19', N'Đèo Hải Vân 6', 1100000, '7');
+insert into route values ('20', N'VT 6', 120000, '7');
+
 
 insert into member values ('1', N'Nguyễn Xuân Mai', '012345678', 120000, '1');
 insert into member values ('2', N'Khưu Thùy Kỳ', '152637934', 240000, '1');
@@ -162,6 +183,14 @@ insert into member values ('13', N'Nhựt Nam', '2403294', 30000, '4');
 
 insert into member values ('14', N'Nguyễn Thị Lan 5', '019826421', 300000, '5');
 insert into member values ('15', N'Lê Văn An 5', '2403294', 30000, '5');
+
+
+insert into member values ('16', N'Lê Văn Đạt 6', '019826421', 300000, '6');
+insert into member values ('17', N'Trần Dần 6', '2403294', 30000, '6');
+
+
+insert into member values ('18', N'Lê Thị Tám 7', '019826421', 300000, '7');
+insert into member values ('19', N'Trần Dần Bảy 7', '2403294', 30000, '7');
 
 
  select * from trip join member on trip.id = member.idtrip;
