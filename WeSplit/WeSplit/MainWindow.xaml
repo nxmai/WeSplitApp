@@ -27,7 +27,7 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition  Width="410"/>
+                <ColumnDefinition Width="410"/>
                 <ColumnDefinition Width="0.8*"/>
                 <ColumnDefinition Width="0.75*" />
                 <ColumnDefinition Width="1.3*"/>
@@ -62,26 +62,43 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <Border BorderBrush="#28292e" BorderThickness="1" VerticalAlignment="Center" CornerRadius="10" Width="500" Height="37">
-                <StackPanel Margin="5" Orientation="Horizontal">
-                    <!--<Button  BorderThickness="0"  Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1.3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Border BorderBrush="#28292e" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="10" Width="480" Height="37">
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <!--<Button  BorderThickness="0"  Background="White">
                         <fa:ImageAwesome Icon="Search" Width="18" ></fa:ImageAwesome>
-                    </Button>-->
+                        </Button>-->
 
-                    <TextBox Name="searchTextBox" BorderBrush="White" Height="25" Width="460"
+                        <TextBox Name="searchTextBox" BorderBrush="White" Height="25" Width="460"
                          FontSize="15" VerticalContentAlignment="Center" Margin="3 0 0 0" KeyUp="search_Press" 
-                         TextWrapping="Wrap"  />
+                         TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
 
-                </StackPanel>
-            </Border>
+            <Grid Grid.Column="2">
+                <RadioButton Margin="0 0 0 0" GroupName="choice" Tag="1" Click="checkChosenEvent">Tên địa danh</RadioButton>
+                <RadioButton Margin="110 0 0 0" GroupName="choice" Tag="2" Click="checkChosenEvent">Tên thành viên</RadioButton>
+            </Grid>
+
         </Grid>
 
         <!--PreviewMouseLeftButtonUp="listview_click"-->
         <Grid Grid.Row="2">
-            <ListView x:Name="tripdata" Width="500"  ItemsSource="{Binding id}" Margin="247,0,247.667,71"  >
+            <ListView x:Name="tripdata" Width="520"  ItemsSource="{Binding id}" HorizontalAlignment="Center"  >
                 <ListView.View >
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Tên chuyến đi" Width="200"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Tên chuyến đi" Width="200" />
                         <GridViewColumn DisplayMemberBinding="{Binding datetogo, StringFormat={}{0:MM/dd/yyyy}}" Header="Ngày đi" Width="150"/>
                         <GridViewColumn DisplayMemberBinding="{Binding returndate, StringFormat={}{0:MM/dd/yyyy}}" Header="Ngày về" Width="150"/>
                     </GridView>

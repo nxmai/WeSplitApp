@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="wesplitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="image">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="idtrip" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="path" Type="char" MaxLength="50" />
+    <Property Name="idtrip" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="idtrip" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="phonenumber" Type="char" MaxLength="11" />
+    <Property Name="collectedmoney" Type="int" />
+    <Property Name="idtrip" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="places">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="500" />
+    <Property Name="discription" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="route">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="idtrip" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="place" Type="nvarchar" MaxLength="50" />
+    <Property Name="cost" Type="int" />
+    <Property Name="idtrip" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="trip">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="idplace" Type="int" />
+    <Property Name="thumbnail" Type="char" MaxLength="50" />
+    <Property Name="datetogo" Type="date" />
+    <Property Name="returndate" Type="date" />
+    <Property Name="isfinish" Type="bit" />
+    <Property Name="totalrevenue" Type="int" />
+    <Property Name="totalexpend" Type="int" />
+  </EntityType>
+  <Association Name="fk_image">
+    <End Role="trip" Type="Self.trip" Multiplicity="1" />
+    <End Role="image" Type="Self.image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trip">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="image">
+        <PropertyRef Name="idtrip" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_member">
+    <End Role="trip" Type="Self.trip" Multiplicity="1" />
+    <End Role="member" Type="Self.member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trip">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="member">
+        <PropertyRef Name="idtrip" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_route">
+    <End Role="trip" Type="Self.trip" Multiplicity="1" />
+    <End Role="route" Type="Self.route" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trip">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="route">
+        <PropertyRef Name="idtrip" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_trip">
+    <End Role="places" Type="Self.places" Multiplicity="0..1" />
+    <End Role="trip" Type="Self.trip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="places">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="trip">
+        <PropertyRef Name="idplace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="wesplitModelStoreContainer">
+    <EntitySet Name="image" EntityType="Self.image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="places" EntityType="Self.places" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="route" EntityType="Self.route" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trip" EntityType="Self.trip" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_image" Association="Self.fk_image">
+      <End Role="trip" EntitySet="trip" />
+      <End Role="image" EntitySet="image" />
+    </AssociationSet>
+    <AssociationSet Name="fk_member" Association="Self.fk_member">
+      <End Role="trip" EntitySet="trip" />
+      <End Role="member" EntitySet="member" />
+    </AssociationSet>
+    <AssociationSet Name="fk_route" Association="Self.fk_route">
+      <End Role="trip" EntitySet="trip" />
+      <End Role="route" EntitySet="route" />
+    </AssociationSet>
+    <AssociationSet Name="fk_trip" Association="Self.fk_trip">
+      <End Role="places" EntitySet="places" />
+      <End Role="trip" EntitySet="trip" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

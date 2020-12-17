@@ -20,25 +20,30 @@ namespace WeSplit
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    
+
     public partial class MainWindow : Window
     {
         wesplitEntities db = new wesplitEntities();
         public static ListView data;
 
+        public string connectionString = "Server=LAPTOP-G9G0JOGE;Database=wesplit;Trusted_Connection=True;";
+
         public List<trip> NotFinishTrip = new List<trip>();
         public List<trip> allTrip = new List<trip>();
+
+        public int radioTag = 0;
         public MainWindow()
         {
             InitializeComponent();
-            
+
             allTrip = db.trips.ToList();
             NotFinishTrip.Add(allTrip.Find(x => x.isfinish == false));
 
             tripdata.ItemsSource = NotFinishTrip;
             data = tripdata;
         }
-        
+
+        //function show detail window of 1 trip when clicked
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = (sender as FrameworkElement).DataContext;
@@ -48,6 +53,7 @@ namespace WeSplit
             detail.ShowDialog();
         }
 
+        //open place window tab
         private void placeWindow(object sender, MouseButtonEventArgs e)
         {
             Window place = new PlacesWindow();
@@ -73,7 +79,7 @@ namespace WeSplit
             "ÝỲỴỶỸ"
         };
         public static string filterVietNameseTone(string str)
-        {  
+        {
             for (int i = 1; i < VietNamChar.Length; i++)
             {
                 for (int j = 0; j < VietNamChar[i].Length; j++)
@@ -81,17 +87,28 @@ namespace WeSplit
             }
             return str;
         }
-        
+
+        //catch search event
         private void search_Press(object sender, KeyEventArgs e)
         {
-            string connectionString = "Server=LAPTOP-G9G0JOGE;Database=wesplit;Trusted_Connection=True;";
-            
-            tripdata.ItemsSource = SearchByMemberName(connectionString);
+            if (radioTag == 0)
+            {
+                MessageBox.Show("Hãy chọn 1 trong hai lựa chọn để tìm kiếm!!!");
+                searchTextBox.Clear();
+            }
+            else if (radioTag == 1)
+            {
+                tripdata.ItemsSource = SearchByPlaceName(connectionString);
+            }
+            else if (radioTag == 2)
+            {
+                tripdata.ItemsSource = SearchByMemberName(connectionString);
+            }
         }
 
         public List<trip> SearchByPlaceName(string connectionString)
         {
-            string queryString = "select * from trip join places on trip.idplace = places.id;";
+            string queryString = "select * from trip join places on trip.idplace = places.id where isfinish = 0;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 List<trip> res = new List<trip>();
@@ -103,7 +120,7 @@ namespace WeSplit
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
-                    { 
+                    {
                         placeName = reader[10].ToString();
                         index = (int)reader[0];
 
@@ -120,7 +137,7 @@ namespace WeSplit
 
         public List<trip> SearchByMemberName(string connectionString)
         {
-            string queryString = "select * from trip join member on trip.id = member.idtrip;";
+            string queryString = "select * from trip join member on trip.id = member.idtrip where isfinish = 0;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 List<trip> res = new List<trip>();
@@ -148,6 +165,12 @@ namespace WeSplit
                 connection.Close();
                 return res;
             }
+        }
+
+        private void checkChosenEvent(object sender, RoutedEventArgs e)
+        {
+            var senderObj = (RadioButton)sender;
+            radioTag = Convert.ToInt32(senderObj.Tag);
         }
 
     }
