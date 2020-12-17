@@ -114,10 +114,10 @@ insert into route values ('2', N'Làng đại học', 70000, '1');
 insert into route values ('3', N'Bò sữa Long Thành', 100000, '1');
 insert into route values ('4', N'Bãi sau Vũng Tàu', 20000, '1');
 
-insert into route values ('5', 'Đại học Khoa học tự nhiên 2', 60000, '2');
-insert into route values ('6', 'Làng đại học 2', 80000, '2');
-insert into route values ('7', 'Bò sữa Long Thành 2', 110000, '2');
-insert into route values ('8', 'Bãi sau Vũng Tàu 2', 21000, '2');
+insert into route values ('5', N'Đại học Khoa học tự nhiên 2', 60000, '2');
+insert into route values ('6', N'Làng đại học 2', 80000, '2');
+insert into route values ('7', N'Bò sữa Long Thành 2', 110000, '2');
+insert into route values ('8', N'Bãi sau Vũng Tàu 2', 21000, '2');
 
 insert into route values ('9', N'Đại học Khoa học tự nhiên 3 ', 50000, '3');
 insert into route values ('10', N'Làng đại học 3', 70000, '3');
@@ -134,9 +134,9 @@ insert into member values ('1', N'Nguyễn Xuân Mai', '012345678', 120000, '1')
 insert into member values ('2', N'Khưu Thùy Kỳ', '152637934', 240000, '1');
 insert into member values ('3', N'Dương Bội Long', '019826421', 300000, '1');
 
-insert into member values ('4', 'Nguyễn Xuân Mai 2', '012345678', 220000, '2');
-insert into member values ('5', 'Khưu Thùy Kỳ 2', '152637934', 340000, '2');
-insert into member values ('6', 'Dương Bội Long 2', '019826421', 400000, '2');
+insert into member values ('4', N'Nguyễn Xuân Mai 2', '012345678', 220000, '2');
+insert into member values ('5', N'Khưu Thùy Kỳ 2', '152637934', 340000, '2');
+insert into member values ('6', N'Dương Bội Long 2', '019826421', 400000, '2');
 
 insert into member values ('7', N'Nguyễn Xuân Mai 3', '012345678', 1200000, '3');
 insert into member values ('8', N'Khưu Thùy Kỳ 3', '152637934', 2400000, '3');
@@ -145,3 +145,9 @@ insert into member values ('9', N'Dương Bội Long 3', '019826421', 3000000, '
 insert into member values ('10', N'Nguyễn Xuân Mai 4', '012345678', 200000, '4');
 insert into member values ('11', N'Khưu Thùy Kỳ 4', '152637934', 240000, '4');
 insert into member values ('12', N'Dương Bội Long 4', '019826421', 300000, '4');
+insert into member values ('13', N'Nhựt Nam', '2403294', 30000, '4');
+
+
+ select * from trip join member on trip.id = member.idtrip;
+
+ select * from trip join places on trip.idplace = places.id;

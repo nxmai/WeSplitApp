@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeSplit"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
@@ -13,12 +14,13 @@
     </Window.Background>
 
     <Window.Resources>
-        
+
     </Window.Resources>
 
     <Grid>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="70"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -59,16 +61,29 @@
 
         </Grid>
 
+        <Grid Grid.Row="1">
+            <Border BorderBrush="#28292e" BorderThickness="1" VerticalAlignment="Center" CornerRadius="10" Width="500" Height="37">
+                <StackPanel Margin="5" Orientation="Horizontal">
+                    <!--<Button  BorderThickness="0"  Background="White">
+                        <fa:ImageAwesome Icon="Search" Width="18" ></fa:ImageAwesome>
+                    </Button>-->
+
+                    <TextBox Name="searchTextBox" BorderBrush="White" Height="25" Width="460"
+                         FontSize="15" VerticalContentAlignment="Center" Margin="3 0 0 0" KeyUp="search_Press" 
+                         TextWrapping="Wrap"  />
+
+                </StackPanel>
+            </Border>
+        </Grid>
 
         <!--PreviewMouseLeftButtonUp="listview_click"-->
-        <Grid Grid.Row="1">
-            <ListView x:Name="tripdata" Width="500" Height="500"  ItemsSource="{Binding id}"  >
-                
+        <Grid Grid.Row="2">
+            <ListView x:Name="tripdata" Width="500"  ItemsSource="{Binding id}" Margin="247,0,247.667,71"  >
                 <ListView.View >
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Tên chuyến đi" Width="200"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding datetogo, StringFormat=\{0:dd-mm-yyyy\}}" Header="Ngày đi" Width="150"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding returndate, StringFormat=\{0:dd-mm-yyyy\}}" Header="Ngày về" Width="150"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding datetogo, StringFormat={}{0:MM/dd/yyyy}}" Header="Ngày đi" Width="150"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding returndate, StringFormat={}{0:MM/dd/yyyy}}" Header="Ngày về" Width="150"/>
                     </GridView>
                 </ListView.View>
 
@@ -80,18 +95,8 @@
                 </ListView.ItemContainerStyle>
             </ListView>
 
-            <!--<DockPanel>
-                <DataGrid x:Name="mydatagrid" DataGridCell.Selected="getId">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="id" Binding="{Binding id}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="name" Binding="{Binding name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="address" Binding="{Binding address}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="discription" Binding="{Binding discription}"></DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </DockPanel>-->
         </Grid>
-        
+
     </Grid>
 
 </Window>
