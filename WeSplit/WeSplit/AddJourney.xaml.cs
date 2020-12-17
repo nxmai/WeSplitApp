@@ -30,7 +30,7 @@ namespace WeSplit
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var db = new wesplitEntities();
-            var _places = db.places.ToList<place>();
+            var _places = db.places.ToList();
             journeyPlace.ItemsSource = _places;
         }
 
