@@ -15,10 +15,13 @@ namespace WeSplit
 
     public partial class MainWindow : Window
     {
+        public delegate void DeathHandler();
+        public event DeathHandler Dying;
+
         wesplitEntities db = new wesplitEntities();
         public static ListView data;
 
-        public string connectionString = "Server=.\\SQLEXPRESS;Database=wesplit;Trusted_Connection=True;";
+        public string connectionString = "Server=.;Database=wesplit;Trusted_Connection=True;";
 
         public List<trip> NotFinishTrip = new List<trip>();
         public List<trip> allTrip = new List<trip>();
@@ -206,14 +209,25 @@ namespace WeSplit
         private void addJourney_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var addJourneyScreen = new EditJourney();
-            addJourneyScreen.Dying += addJourneyScreenClosing;
+            addJourneyScreen.Dying += ScreenClosing;
             this.Hide();
             addJourneyScreen.Show();
         }
 
-        private void addJourneyScreenClosing()
+        private void placeWindow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            this.Show();
+            var placesWindow = new PlacesWindow();
+            placesWindow.Dying += ScreenClosing;
+            this.Hide();
+            placesWindow.Show();
+        }
+
+        private void historyWindow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var historyWindow = new HistoryWindow();
+            historyWindow.Dying += ScreenClosing;
+            this.Hide();
+            historyWindow.Show();
         }
     }
 }

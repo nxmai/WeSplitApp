@@ -1,0 +1,118 @@
+﻿<Window x:Class="WeSplit.HistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeSplit"
+        mc:Ignorable="d"
+        Title="HistoryWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush  ImageSource="Data/Images/background.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+
+    </Window.Background>
+
+    <Window.Resources>
+
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="410"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.75*" />
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition Width="0.9*"/>
+                <ColumnDefinition Width="0.75*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <TextBlock Text="WeSplit" VerticalAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="White" Margin="30 0 0 0" MouseLeftButtonUp="mainWindow_MouseLeftButtonUp"></TextBlock>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <TextBlock Text="Địa danh" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563" MouseLeftButtonUp="placeWindow_MouseLeftButtonUp" ></TextBlock>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <TextBlock Text="Lịch sử" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563" ></TextBlock>
+            </Grid>
+
+            <Grid Grid.Column="3" >
+                <TextBlock Name="addJourney" Text="Thêm chuyến đi" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563" MouseLeftButtonUp="addJourney_MouseLeftButtonUp"></TextBlock>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <TextBlock Text="Thông tin" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563"></TextBlock>
+            </Grid>
+
+            <Grid Grid.Column="5">
+                <TextBlock Text="Cài đặt" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563"></TextBlock>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1.3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Border BorderBrush="#28292e" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="10" Width="480" Height="37">
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <!--<Button  BorderThickness="0"  Background="White">
+                        <fa:ImageAwesome Icon="Search" Width="18" ></fa:ImageAwesome>
+                        </Button>-->
+
+                        <TextBox Name="searchTextBox" BorderBrush="White" Height="25" Width="460"
+                         FontSize="15" VerticalContentAlignment="Center" Margin="3 0 0 0" KeyUp="search_Press" 
+                         TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <RadioButton Margin="0 0 0 0" GroupName="choice" Tag="1" Click="checkChosenEvent">Tên địa danh</RadioButton>
+                <RadioButton Margin="110 0 0 0" GroupName="choice" Tag="2" Click="checkChosenEvent">Tên thành viên</RadioButton>
+            </Grid>
+
+        </Grid>
+
+        <!--PreviewMouseLeftButtonUp="listview_click"-->
+        <Grid Grid.Row="2">
+            <Image Source="Data/Images/01.png" Width="350" Margin="540 100 0 0" ></Image>
+
+            <ListView x:Name="tripdata" Width="520"  ItemsSource="{Binding id}" HorizontalAlignment="Center" Margin="35,0,439.667,0"  >
+                <ListView.View >
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Tên chuyến đi" Width="200" />
+                        <GridViewColumn DisplayMemberBinding="{Binding datetogo, StringFormat={}{0:MM/dd/yyyy}}" Header="Ngày đi" Width="150"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding returndate, StringFormat={}{0:MM/dd/yyyy}}" Header="Ngày về" Width="150"/>
+                    </GridView>
+                </ListView.View>
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem" BasedOn="{StaticResource MaterialDesignGridViewItem}">
+                        <EventSetter Event="MouseLeftButtonUp" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                    </Style>
+
+                </ListView.ItemContainerStyle>
+            </ListView>
+
+        </Grid>
+
+    </Grid>
+</Window>

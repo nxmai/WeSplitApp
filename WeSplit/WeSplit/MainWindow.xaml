@@ -40,11 +40,11 @@
             </Grid>
 
             <Grid Grid.Column="1">
-                <TextBlock Text="Địa danh" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563" MouseLeftButtonUp="placeWindow"></TextBlock>
+                <TextBlock Text="Địa danh" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563" MouseLeftButtonUp="placeWindow_MouseLeftButtonUp"></TextBlock>
             </Grid>
 
             <Grid Grid.Column="2">
-                <TextBlock Text="Lịch sử" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563" ></TextBlock>
+                <TextBlock Text="Lịch sử" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563" MouseLeftButtonUp="historyWindow_MouseLeftButtonUp"></TextBlock>
             </Grid>
 
             <Grid Grid.Column="3" >
@@ -95,7 +95,9 @@
 
         <!--PreviewMouseLeftButtonUp="listview_click"-->
         <Grid Grid.Row="2">
-            <ListView x:Name="tripdata" Width="520"  ItemsSource="{Binding id}" HorizontalAlignment="Center"  >
+            <Image Source="Data/Images/01.png" Width="350" Margin="540 100 0 0" ></Image>
+
+            <ListView x:Name="tripdata" Width="520"  ItemsSource="{Binding id}" HorizontalAlignment="Center" Margin="35,0,439.667,0"  >
                 <ListView.View >
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Tên chuyến đi" Width="200" />
