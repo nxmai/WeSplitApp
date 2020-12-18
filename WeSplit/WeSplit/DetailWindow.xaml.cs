@@ -325,16 +325,24 @@ namespace WeSplit
         private void addRouteClick(object sender, RoutedEventArgs e)
         {
             var editRouteScreen = new EditJourney(selectedTrip.id);
-            this.Close();
+            editRouteScreen.Dying += ScreenClosing;
+            this.Hide();
             editRouteScreen.Show();
         }
 
         private void addMemberClick(object sender, RoutedEventArgs e)
         {
             var editMemberScreen = new EditMember(selectedTrip.id);
-            this.Close();
+            editMemberScreen.Dying += ScreenClosing;
+            this.Hide();
             editMemberScreen.Show();
         }
+
+        private void ScreenClosing()
+        {
+            this.Show();
+        }
+
 
         private void updateDateGoClick(object sender, RoutedEventArgs e)
         {
@@ -369,9 +377,7 @@ namespace WeSplit
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
-            
-           // Dying?.Invoke();
+            Dying?.Invoke();
             //this.Close();
 
         }

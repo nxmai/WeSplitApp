@@ -78,7 +78,11 @@ namespace WeSplit
             else
             {
                 journeyName.IsEnabled = false;
+                journeyName.Foreground = Brushes.Gray;
                 journeyPlace.IsEnabled = false;
+                journeyPlace.Foreground = Brushes.Gray;
+                journeyBegDate.IsEnabled = false;
+                journeyEndDate.IsEnabled = false;
                 _trip = db.trips.Find(idTrip);
                 journeyPlace.ItemsSource = new BindingList<place>(db.places.Where(x => x.id == _trip.idplace).ToList());
                 journeyPlace.SelectedIndex = 0;
@@ -100,7 +104,7 @@ namespace WeSplit
         }
 
         private void finishEditJourney_Click(object sender, RoutedEventArgs e)
-        {
+        {/*
             if (idTrip != -1)
             {
                 DetailWindow detailScreen = new DetailWindow(idTrip);
@@ -110,7 +114,8 @@ namespace WeSplit
             else
             {
                 this.Close();
-            }
+            }*/
+            this.Close();
         }
 
         private void addRouteEdit_Click(object sender, RoutedEventArgs e)

@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WeSplit"
         mc:Ignorable="d"
-        Title="PlacesWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="PlacesWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="Window_Closing">
 
     <Window.Background>
         <ImageBrush  ImageSource="Data/Images/background.png" RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -14,6 +15,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
+            <RowDefinition Height="420"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -54,7 +56,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <ListView x:Name="placedata" Width="900" Height="500"  ItemsSource="{Binding id}" >
+            <ListView x:Name="placedata" Width="900" Height="400"  ItemsSource="{Binding id}" >
                 <ListView.View >
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding name}" Header="  Tên địa danh" Width="200"/>
@@ -69,6 +71,20 @@
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
+            
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel>
+                <TextBlock Name="Notif" TextAlignment="Center"></TextBlock>
+                <StackPanel Name="placedata1" Width="900" Orientation="Horizontal" VerticalAlignment="Top">
+                    <TextBox Name="namePlace" Margin="3,0,3,0" Width="200" Padding="20,0,0,0" FontWeight="Bold" materialDesign:HintAssist.Hint="Tên địa danh" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"  />
+                    <TextBox Name="addrPlace" Margin="3,0,3,0" Width="300" Padding="15,0,0,0" FontWeight="Bold" materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
+                    <TextBox Name="descrPlace" Margin="3,0,3,0" Width="400" Padding="15,0,0,0" FontWeight="Bold" materialDesign:HintAssist.Hint="Mô tả" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
+                </StackPanel>
+                <Button Name="addPlace" Margin="5" Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" Height="40" Width="40" Click="addPlace_Click">
+                    <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+                </Button>
+            </StackPanel>
         </Grid>
 
     </Grid>

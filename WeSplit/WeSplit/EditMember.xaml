@@ -35,9 +35,9 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <StackPanel  Grid.Column="0" Grid.Row="0" Margin="10" >
-                    <TextBox Name="journeyName"  Margin="0,0,0,20" materialDesign:HintAssist.Hint="Tên Chuyến Đi" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" VerticalAlignment="Center" FontSize="20"/>
+                    <TextBox Name="journeyName"  Margin="0,0,0,20" materialDesign:HintAssist.Hint="Tên Chuyến Đi" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Gray" VerticalAlignment="Center" FontSize="20"/>
 
-                    <ComboBox Name="journeyPlace" Margin="0,0,0,20" materialDesign:HintAssist.Hint="Địa Danh" Foreground="Black" IsEditable="False" FontSize="20" ItemsSource="{Binding _places}">
+                    <ComboBox Name="journeyPlace" Margin="0,0,0,20" materialDesign:HintAssist.Hint="Địa Danh" Foreground="Gray" IsEditable="False" FontSize="20" ItemsSource="{Binding _places}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -49,8 +49,8 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <DatePicker Name="journeyBegDate" Margin="0,0,10,20" HorizontalAlignment="Left" Width="auto" materialDesign:HintAssist.Hint="Ngày Đi" Style="{StaticResource MaterialDesignOutlinedDatePicker}" FontSize="20" SelectedDateChanged="journeyBegDate_SelectedDateChanged" />
-                        <DatePicker Name="journeyEndDate" Margin="10,0,0,20" HorizontalAlignment="Left" Width="auto" materialDesign:HintAssist.Hint="Ngày Về" Style="{StaticResource MaterialDesignOutlinedDatePicker}" FontSize="20" />
+                        <DatePicker Name="journeyBegDate" Margin="0,0,10,0" HorizontalAlignment="Left" Width="auto" materialDesign:HintAssist.Hint="Ngày Đi" Style="{StaticResource MaterialDesignOutlinedDatePicker}" FontSize="20" SelectedDateChanged="journeyBegDate_SelectedDateChanged" IsEnabled="False"/>
+                        <DatePicker Name="journeyEndDate" Margin="10,0,0,0" HorizontalAlignment="Left" Width="auto" materialDesign:HintAssist.Hint="Ngày Về" Style="{StaticResource MaterialDesignOutlinedDatePicker}" FontSize="20" IsEnabled="False"/>
                     </StackPanel>
 
                 </StackPanel>
@@ -85,7 +85,7 @@
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Name="journeyThumbnail" Height="200" Width="250" Visibility="Visible" ></Image>
-                    <Button Name="addThumbail" Click="addThumbail_Click">Add Picture</Button>
+                    <Button Name="addThumbail" Click="addThumbail_Click" IsEnabled="False">Add Picture</Button>
                 </StackPanel>
                 <ListView Name="memberList" ItemsSource="{Binding _routes}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
                     <ListView.View >

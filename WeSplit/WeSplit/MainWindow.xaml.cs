@@ -17,7 +17,7 @@ namespace WeSplit
         wesplitEntities db = new wesplitEntities();
         public static ListView data;
 
-        public string connectionString = "Server=.;Database=wesplit;Trusted_Connection=True;";
+        public string connectionString = "Server=.\\SQLEXPRESS;Database=wesplit;Trusted_Connection=True;";
 
         public List<trip> NotFinishTrip = new List<trip>();
         public List<trip> allTrip = new List<trip>();
@@ -33,6 +33,8 @@ namespace WeSplit
 
         public void loadData()
         {
+            var db = new wesplitEntities();
+            var NotFinishTrip = new List<trip>();
             allTrip = db.trips.ToList();
             //NotFinishTrip.Add(allTrip.Find(x => x.isfinish == false));Know, Remember, Forget
             for (int i = 0; i < allTrip.Count(); i++)
@@ -44,7 +46,7 @@ namespace WeSplit
             }
 
             tripdata.ItemsSource = NotFinishTrip;
-            data = tripdata;
+            data = tripdata;    
         }
         //function show detail window of 1 trip when clicked
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -54,13 +56,19 @@ namespace WeSplit
 
             DetailWindow detail = new DetailWindow(id);
             //this.Hide();
-            // detail.Dying += test;
-            this.Close();
+            detail.Dying += ScreenClosing;
+            detail.Dying += loadData;
+            this.Hide();
             detail.Show();
 
             //loadData();
 
 
+        }
+
+        private void ScreenClosing()
+        {
+            this.Show();
         }
 
         void test()
@@ -72,7 +80,9 @@ namespace WeSplit
         //open place window tab
         private void placeWindow(object sender, MouseButtonEventArgs e)
         {
-            Window place = new PlacesWindow();
+            var place = new PlacesWindow();
+            place.Dying += ScreenClosing;
+            this.Hide();
             place.ShowDialog();
         }
 

@@ -32,12 +32,7 @@ namespace WeSplit
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (idTrip != -1)
-            {
-                DetailWindow detaimScreen = new DetailWindow(idTrip);
-                detaimScreen.Show();
-
-            }
+            Dying?.Invoke();
         }
         public EditMember()
         {
