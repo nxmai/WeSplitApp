@@ -26,7 +26,7 @@ namespace WeSplit
         wesplitEntities db = new wesplitEntities();
         public static ListView data;
 
-        public string connectionString = "Server=LAPTOP-G9G0JOGE;Database=wesplit;Trusted_Connection=True;";
+        public string connectionString = "Server=.;Database=wesplit;Trusted_Connection=True;";
 
         public List<trip> NotFinishTrip = new List<trip>();
         public List<trip> allTrip = new List<trip>();
@@ -37,7 +37,7 @@ namespace WeSplit
             InitializeComponent();
 
             allTrip = db.trips.ToList();
-            //NotFinishTrip.Add(allTrip.Find(x => x.isfinish == false));
+            //NotFinishTrip.Add(allTrip.Find(x => x.isfinish == false));Know, Remember, Forget
             for(int i = 0; i < allTrip.Count(); i++)
             {
                 if(allTrip[i].isfinish == false)
@@ -180,5 +180,17 @@ namespace WeSplit
             radioTag = Convert.ToInt32(senderObj.Tag);
         }
 
+        private void addJourney_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var addJourneyScreen = new EditJourney();
+            addJourneyScreen.Dying += addJourneyScreenClosing;
+            this.Hide();
+            addJourneyScreen.Show();
+        }
+
+        private void addJourneyScreenClosing()
+        {
+            this.Show();
+        }
     }
 }

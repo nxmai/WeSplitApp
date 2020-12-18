@@ -78,8 +78,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddJourney.xaml.cs">
-      <DependentUpon>AddJourney.xaml</DependentUpon>
+    <Compile Include="EditJourney.xaml.cs">
+      <DependentUpon>EditJourney.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntityModel.cs">
       <AutoGen>True</AutoGen>
@@ -107,11 +107,11 @@
     <Compile Include="trip.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Page Include="AddJourney.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="DetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditJourney.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,18 +183,42 @@
     <Resource Include="Data\Images\background.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\fakedata\dalat1.jpg" />
-    <Resource Include="Data\fakedata\dalat2.jpg" />
-    <Resource Include="Data\fakedata\dalat3.jpg" />
-    <Resource Include="Data\fakedata\dalat_thumbnail.jpg" />
-    <Resource Include="Data\fakedata\danang1.jpg" />
-    <Resource Include="Data\fakedata\danang2.jpg" />
-    <Resource Include="Data\fakedata\danang3.jpg" />
-    <Resource Include="Data\fakedata\danang_thumbnail.jpg" />
-    <Resource Include="Data\fakedata\vungtau1.jpg" />
-    <Resource Include="Data\fakedata\vungtau2.jpg" />
-    <Resource Include="Data\fakedata\vungtau3.jpg" />
-    <Resource Include="Data\fakedata\vungtau_thumbnail.jpg" />
+    <None Include="Data\fakedata\dalat1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\fakedata\dalat2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\fakedata\dalat3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\fakedata\dalat_thumbnail.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\fakedata\danang1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\fakedata\danang2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\fakedata\danang3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\fakedata\danang_thumbnail.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\fakedata\vungtau1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\fakedata\vungtau2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\fakedata\vungtau3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\fakedata\vungtau_thumbnail.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="EntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityModel.Context.cs</LastGenOutput>

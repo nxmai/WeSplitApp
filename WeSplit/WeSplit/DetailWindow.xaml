@@ -230,7 +230,7 @@
             <StackPanel Grid.Column="0" Orientation="Horizontal">
 
                 <TextBlock TextAlignment="Right" Width="230" FontSize="16" FontWeight="Bold" VerticalAlignment="Center">Danh sách lộ trình</TextBlock>
-                <Button Margin="10,0,0,0" Width="20" Height="20" Click="addRouteClick"></Button>
+                <Button Margin="10,5,0,0" Width="20" Height="20" Click="addRouteClick" VerticalAlignment="Top"></Button>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal">

@@ -44,7 +44,7 @@ create table image
 	path char(50),
 	idtrip int
 
-	constraint pk_image primary key (id, idtrip)
+	constraint pk_image primary key (id)
 )
 go
 
@@ -59,7 +59,7 @@ create table route
 	cost int,
 	idtrip int
 
-	constraint pk_route primary key (id, idtrip)
+	constraint pk_route primary key (id)
 )
 
 alter table route add constraint fk_route foreign key (idtrip) references trip(id)
@@ -74,7 +74,7 @@ create table member
 	collectedmoney int,
 	idtrip int
 
-	constraint pk_member primary key (id, idtrip)
+	constraint pk_member primary key (id)
 )
 go
 

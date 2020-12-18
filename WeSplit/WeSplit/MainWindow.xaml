@@ -48,7 +48,7 @@
             </Grid>
 
             <Grid Grid.Column="3" >
-                <TextBlock Text="Thêm chuyến đi" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563"></TextBlock>
+                <TextBlock Name="addJourney" Text="Thêm chuyến đi" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#233563" MouseLeftButtonUp="addJourney_MouseLeftButtonUp"></TextBlock>
             </Grid>
 
             <Grid Grid.Column="4">
