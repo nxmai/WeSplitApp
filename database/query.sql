@@ -81,9 +81,8 @@ go
 alter table member add constraint fk_member foreign key (idtrip) references trip(id)
 go
 
-
-insert into places values ('1', N'Biển Vũng Tàu', N'Bãi sau Vũng Tàu, thành phố Vũng Tàu, tỉnh Bà Rịa - Vũng Tàu', N'Vũng Tàu là một thành phố thuộc tỉnh Bà Rịa - Vũng Tàu, ở vùng Đông Nam Bộ, Việt Nam. Đây là trung tâm kinh tế, tài chính, văn hóa, du lịch, giao thông - vận tải và giáo dục và là một trong những trung tâm kinh tế của vùng Đông Nam Bộ');
-insert into places values ('2', N'Đà Lạt', N'Tỉnh Lâm Đồng', N'Đà Lạt là thành phố tỉnh lỵ của tỉnh Lâm Đồng, nằm trên cao nguyên Lâm Viên, thuộc vùng Tây Nguyên, Việt Nam. Từ xa xưa, vùng đất này vốn là địa bàn cư trú của những cư dân người Lạch, người Chil và người Srê thuộc dân tộc Cơ Ho.');
+insert into places values ('1', N'Biển Vũng Tàu', N'Bãi sau Vũng Tàu, tỉnh Bà Rịa - Vũng Tàu', N'Vũng Tàu là một thành phố thuộc tỉnh Bà Rịa - Vũng Tàu, ở vùng Đông Nam Bộ, Việt Nam. ');
+insert into places values ('2', N'Đà Lạt', N'Tỉnh Lâm Đồng', N'Đà Lạt là thành phố tỉnh lỵ của tỉnh Lâm Đồng, nằm trên cao nguyên Lâm Viên, thuộc vùng Tây Nguyên, Việt Nam. Từ xa xưa, vùng đất này vốn là địa bàn cư trú của những cư dân người Lạch.');
 insert into places values ('3', N'Đà Nẵng', N'Tỉnh Đà Nẵng', N'Đà Nẵng là một thành phố trực thuộc trung ương, nằm trong vùng Duyên hải Nam Trung Bộ Việt Nam, là thành phố trung tâm và lớn nhất khu vực miền Trung - Tây Nguyên.');
 
 
@@ -91,10 +90,10 @@ insert into trip values ('1', N'Tắm biển mùa đông', '1', 'Data/fakedata/v
 insert into trip values ('2', N'Tắm biển mùa hè', '1', 'Data/fakedata/vungtau_thumbnail.jpg', '1/6/2020', '3/6/2020', 1, null, null);
 insert into trip values ('3', N'Du lịch Đà Lạt', '2', 'Data/fakedata/dalat_thumbnail.jpg', '5/7/2020', '12/7/2020', 1, null, null);
 insert into trip values ('4', N'Đi Đà Nẵng', '3', 'Data/fakedata/danang_thumbnail.jpg', '1/6/2019', '5/6/2019', 1, null, null);
-insert into trip values ('5', N'Đà Lạt chưa về', '2', 'Data/fakedata/dalat_thumbnail.jpg', '1/6/2021', '5/6/2021', 0, null, null);
+insert into trip values ('5', N'Đà Lạt mùa hè', '2', 'Data/fakedata/dalat_thumbnail.jpg', '1/6/2021', '5/6/2021', 0, null, null);
 
-insert into trip values ('6', N'Đà Nẵng chưa về', '3', 'Data/fakedata/danang_thumbnail.jpg', '12/1/2020', '12/26/2020', 0, null, null);
-insert into trip values ('7', N'Vũng Tàu chưa về', '1', 'Data/fakedata/vungtau_thumbnail.jpg', '12/1/2020', '12/20/2020', 0, null, null);
+insert into trip values ('6', N'Đà Nẵng cuối năm', '3', 'Data/fakedata/danang_thumbnail.jpg', '12/1/2020', '12/26/2020', 0, null, null);
+insert into trip values ('7', N'Vũng Tàu cuối năm', '1', 'Data/fakedata/vungtau_thumbnail.jpg', '12/1/2020', '12/20/2020', 0, null, null);
 
 
 
@@ -135,58 +134,58 @@ insert into route values ('2', N'Làng đại học', 70000, '1');
 insert into route values ('3', N'Bò sữa Long Thành', 100000, '1');
 insert into route values ('4', N'Bãi sau Vũng Tàu', 20000, '1');
 
-insert into route values ('5', N'Đại học Khoa học tự nhiên 2', 60000, '2');
-insert into route values ('6', N'Làng đại học 2', 80000, '2');
-insert into route values ('7', N'Bò sữa Long Thành 2', 110000, '2');
-insert into route values ('8', N'Bãi sau Vũng Tàu 2', 21000, '2');
+insert into route values ('5', N'Đại học Khoa học tự nhiên', 60000, '2');
+insert into route values ('6', N'Làng đại học', 80000, '2');
+insert into route values ('7', N'Bò sữa Long Thành', 110000, '2');
+insert into route values ('8', N'Bãi sau Vũng Tàu', 21000, '2');
 
-insert into route values ('9', N'Đại học Khoa học tự nhiên 3 ', 50000, '3');
-insert into route values ('10', N'Làng đại học 3', 70000, '3');
+insert into route values ('9', N'Đại học Khoa học tự nhiên ', 50000, '3');
+insert into route values ('10', N'Làng đại học', 70000, '3');
 insert into route values ('11', N'Cao nguyên Lâm Viên ', 100000, '3');
 insert into route values ('12', N'Thành phố Đà Lạt', 20000, '3');
 
-insert into route values ('13', N'Đại học Khoa học tự nhiên 4', 150000, '4');
-insert into route values ('14', N'Làng đại học 4', 710000, '4');
+insert into route values ('13', N'Đại học Khoa học tự nhiên', 150000, '4');
+insert into route values ('14', N'Làng đại học', 710000, '4');
 insert into route values ('15', N'Đèo Hải Vân', 1100000, '4');
 insert into route values ('16', N'Đà Nẵng', 120000, '4');
 
-insert into route values ('13', N'Đại học Khoa học tự nhiên 4', 150000, '5');
-insert into route values ('14', N'Làng đại học 5', 710000, '5');
-insert into route values ('15', N'Đèo Hải Vân 5', 1100000, '5');
-insert into route values ('16', N'Đà Lat 5', 120000, '5');
+insert into route values ('13', N'Đại học Khoa học tự nhiên', 150000, '5');
+insert into route values ('14', N'Làng đại học', 710000, '5');
+insert into route values ('15', N'Đồi gió hú', 1100000, '5');
+insert into route values ('16', N'Đà Lat', 120000, '5');
 
 
-insert into route values ('17', N'Đèo Hải Vân 6', 1100000, '6');
-insert into route values ('18', N'DN 6', 120000, '6');
+insert into route values ('17', N'Đèo Hải Vân', 1100000, '6');
+insert into route values ('18', N'DN', 120000, '6');
 
 
-insert into route values ('19', N'Đèo Hải Vân 6', 1100000, '7');
-insert into route values ('20', N'VT 6', 120000, '7');
+insert into route values ('19', N'Bò sữa Long Thành', 1100000, '7');
+insert into route values ('20', N'Vũng Tàu', 120000, '7');
 
 
 insert into member values ('1', N'Nguyễn Xuân Mai', '012345678', 120000, '1');
 insert into member values ('2', N'Khưu Thùy Kỳ', '152637934', 240000, '1');
 insert into member values ('3', N'Dương Bội Long', '019826421', 300000, '1');
 
-insert into member values ('4', N'Nguyễn Xuân Mai 2', '012345678', 220000, '2');
-insert into member values ('5', N'Khưu Thùy Kỳ 2', '152637934', 340000, '2');
-insert into member values ('6', N'Dương Bội Long 2', '019826421', 400000, '2');
+insert into member values ('4', N'Nguyễn Xuân Mai', '012345678', 220000, '2');
+insert into member values ('5', N'Lê Thị Riêng', '152637934', 340000, '2');
+insert into member values ('6', N'Nguyễn Tuân', '019826421', 400000, '2');
 
-insert into member values ('7', N'Nguyễn Xuân Mai 3', '012345678', 1200000, '3');
-insert into member values ('8', N'Khưu Thùy Kỳ 3', '152637934', 2400000, '3');
-insert into member values ('9', N'Dương Bội Long 3', '019826421', 3000000, '3');
+insert into member values ('7', N'Lê Văn Chánh', '012345678', 1200000, '3');
+insert into member values ('8', N'Khưu Thùy Kỳ', '152637934', 2400000, '3');
+insert into member values ('9', N'Nguyễn Du', '019826421', 3000000, '3');
 
-insert into member values ('10', N'Nguyễn Xuân Mai 4', '012345678', 200000, '4');
-insert into member values ('11', N'Khưu Thùy Kỳ 4', '152637934', 240000, '4');
-insert into member values ('12', N'Dương Bội Long 4', '019826421', 300000, '4');
+insert into member values ('10', N'Lưu Văn Hai', '012345678', 200000, '4');
+insert into member values ('11', N'Khưu Thùy Kỳ ', '152637934', 240000, '4');
+insert into member values ('12', N'Dương Văn Chính', '019826421', 300000, '4');
 insert into member values ('13', N'Nhựt Nam', '2403294', 30000, '4');
 
-insert into member values ('14', N'Nguyễn Thị Lan 5', '019826421', 300000, '5');
-insert into member values ('15', N'Lê Văn An 5', '2403294', 30000, '5');
+insert into member values ('14', N'Nguyễn Thị Lan', '019826421', 300000, '5');
+insert into member values ('15', N'Lê Văn An', '2403294', 30000, '5');
 
 
-insert into member values ('16', N'Lê Văn Đạt 6', '019826421', 300000, '6');
-insert into member values ('17', N'Trần Dần 6', '2403294', 30000, '6');
+insert into member values ('16', N'Lê Văn Đạt', '019826421', 300000, '6');
+insert into member values ('17', N'Trần Dần', '2403294', 30000, '6');
 
 
 insert into member values ('18', N'Lê Thị Tám 7', '019826421', 300000, '7');
