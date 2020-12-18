@@ -149,18 +149,17 @@ insert into route values ('14', N'Làng đại học', 710000, '4');
 insert into route values ('15', N'Đèo Hải Vân', 1100000, '4');
 insert into route values ('16', N'Đà Nẵng', 120000, '4');
 
-insert into route values ('13', N'Đại học Khoa học tự nhiên', 150000, '5');
-insert into route values ('14', N'Làng đại học', 710000, '5');
-insert into route values ('15', N'Đồi gió hú', 1100000, '5');
-insert into route values ('16', N'Đà Lat', 120000, '5');
+insert into route values ('17', N'Đại học Khoa học tự nhiên', 150000, '5');
+insert into route values ('18', N'Làng đại học', 710000, '5');
+insert into route values ('19', N'Đồi gió hú', 1100000, '5');
+insert into route values ('20', N'Đà Lat', 120000, '5');
+
+insert into route values ('21', N'Đèo Hải Vân', 1100000, '6');
+insert into route values ('22', N'DN', 120000, '6');
 
 
-insert into route values ('17', N'Đèo Hải Vân', 1100000, '6');
-insert into route values ('18', N'DN', 120000, '6');
-
-
-insert into route values ('19', N'Bò sữa Long Thành', 1100000, '7');
-insert into route values ('20', N'Vũng Tàu', 120000, '7');
+insert into route values ('23', N'Bò sữa Long Thành', 1100000, '7');
+insert into route values ('24', N'Vũng Tàu', 120000, '7');
 
 
 insert into member values ('1', N'Nguyễn Xuân Mai', '012345678', 120000, '1');
