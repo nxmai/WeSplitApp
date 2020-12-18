@@ -1,7 +1,7 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,20 +25,17 @@ namespace WeSplit
 
         public List<trip> NotFinishTrip = new List<trip>();
         public List<trip> allTrip = new List<trip>();
-        String O="";
+
         public int radioTag = 0;
         public MainWindow()
         {
             InitializeComponent();
 
-            loadData();
+            loadData();   
         }
-
 
         public void loadData()
         {
-            var db = new wesplitEntities();
-            var NotFinishTrip = new List<trip>();
             allTrip = db.trips.ToList();
             //NotFinishTrip.Add(allTrip.Find(x => x.isfinish == false));Know, Remember, Forget
             for (int i = 0; i < allTrip.Count(); i++)
@@ -50,9 +47,19 @@ namespace WeSplit
             }
 
             tripdata.ItemsSource = NotFinishTrip;
-            data = tripdata;    
+            data = tripdata;
         }
+
         //function show detail window of 1 trip when clicked
+        //private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    var item = (sender as FrameworkElement).DataContext;
+        //    var x = (item as trip).id;
+
+        //    Window detail = new DetailWindow(x);
+        //    detail.ShowDialog();
+        //}
+
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = (sender as FrameworkElement).DataContext;
@@ -65,33 +72,9 @@ namespace WeSplit
             this.Hide();
             detail.Show();
             //O = detail.oldpath;
-
             //loadData();
-
-
         }
 
-        private void ScreenClosing()
-        {
-            this.Show();
-            /*if (O != "")
-                File.Delete(O.Substring(8));*/
-        }
-/*
-        void test()
-        {
-            loadData();
-            MessageBox.Show("heleo");
-        }
-*/
-        //open place window tab
-        private void placeWindow(object sender, MouseButtonEventArgs e)
-        {
-            var place = new PlacesWindow();
-            place.Dying += ScreenClosing;
-            this.Hide();
-            place.ShowDialog();
-        }
 
         private static readonly string[] VietNamChar = new string[]
         {
@@ -214,6 +197,12 @@ namespace WeSplit
             addJourneyScreen.Show();
         }
 
+        private void ScreenClosing()
+        {
+            this.Show();
+        }
+
+        //open place window tab
         private void placeWindow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var placesWindow = new PlacesWindow();
@@ -231,3 +220,6 @@ namespace WeSplit
         }
     }
 }
+
+
+
