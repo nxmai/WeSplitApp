@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +22,7 @@ namespace WeSplit
 
         public List<trip> NotFinishTrip = new List<trip>();
         public List<trip> allTrip = new List<trip>();
-
+        String O="";
         public int radioTag = 0;
         public MainWindow()
         {
@@ -60,6 +61,7 @@ namespace WeSplit
             detail.Dying += loadData;
             this.Hide();
             detail.Show();
+            //O = detail.oldpath;
 
             //loadData();
 
@@ -69,14 +71,16 @@ namespace WeSplit
         private void ScreenClosing()
         {
             this.Show();
+            /*if (O != "")
+                File.Delete(O.Substring(8));*/
         }
-
+/*
         void test()
         {
             loadData();
             MessageBox.Show("heleo");
         }
-
+*/
         //open place window tab
         private void placeWindow(object sender, MouseButtonEventArgs e)
         {

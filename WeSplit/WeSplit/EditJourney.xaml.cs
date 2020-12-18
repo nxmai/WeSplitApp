@@ -19,11 +19,12 @@ namespace WeSplit
     {
         public delegate void DeathHandler();
         public event DeathHandler Dying;
+        
         int idTrip = -1;
         public BindingList<route> _routes;
         trip _trip = null;
         String newPath = "";
-        String oldPath = "";
+        public String oldPath = "";
         public EditJourney(int id)
         {
             InitializeComponent();
@@ -314,6 +315,12 @@ namespace WeSplit
                 routeMoney.Text = "";
                 //routeMoney.Focus();
             }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            /*Debug.WriteLine(oldPath);
+            Debug.WriteLine(journeyThumbnail.Source.ToString());*/
         }
     }
 }

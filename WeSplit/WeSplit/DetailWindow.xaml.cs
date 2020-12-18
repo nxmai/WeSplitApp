@@ -49,17 +49,15 @@ namespace WeSplit
         public delegate void DeathHandler();
         public event DeathHandler Dying;
 
-
+        public String oldpath ="";
+        int ID;
         public DetailWindow(int id)
         {
             InitializeComponent();
-
-            CreateData(id);
+            ID = id;
+            CreateData(ID);
             BidingData();
-
             customizeWindow();
-
-
         }
 
 
@@ -123,7 +121,7 @@ namespace WeSplit
 
         void loadDataFromDB(int id)
         {
-
+            var db = new wesplitEntities();
             listRoute = db.routes.Where(x => x.idtrip == id).ToList();
             listMember = db.members.Where(x => x.idtrip == id).ToList();
 
@@ -133,6 +131,7 @@ namespace WeSplit
 
         void createDataSelectedTrip(int id)
         {
+            var db = new wesplitEntities();
             selectedTrip.id = id;
 
             var temp = db.trips.Where(x => x.id == id).First();
@@ -181,6 +180,7 @@ namespace WeSplit
 
         void createListImage(int id)
         {
+            var db = new wesplitEntities();
             listImage = db.images.Where(x => x.idtrip == id).ToList();
             // MessageBox.Show(listImage.Count().ToString());
         }
@@ -328,10 +328,13 @@ namespace WeSplit
             editRouteScreen.Dying += ScreenClosing;
             this.Hide();
             editRouteScreen.Show();
+
+            oldpath = editRouteScreen.journeyThumbnail.Source.ToString();
         }
 
         private void addMemberClick(object sender, RoutedEventArgs e)
         {
+
             var editMemberScreen = new EditMember(selectedTrip.id);
             editMemberScreen.Dying += ScreenClosing;
             this.Hide();
@@ -340,6 +343,14 @@ namespace WeSplit
 
         private void ScreenClosing()
         {
+            selectedTrip = new finalSummary();
+            listMember = new List<member>();
+            listRoute = new List<route>();
+            listRestMoney = new List<restMoney>();
+            listImage = new List<image>();
+            CreateData(ID);
+            BidingData();
+            customizeWindow();
             this.Show();
         }
 
@@ -378,8 +389,14 @@ namespace WeSplit
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Dying?.Invoke();
+            
             //this.Close();
 
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            
         }
     }
 }

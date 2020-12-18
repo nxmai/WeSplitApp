@@ -13,7 +13,7 @@
         xmlns:local="clr-namespace:WeSplit"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="DetailWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen"  Closing="Window_Closing">
+        Title="DetailWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen"  Closing="Window_Closing" Closed="Window_Closed">
 
     <Window.Background>
         <ImageBrush  ImageSource="Data/Images/background.png"  RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -160,7 +160,7 @@
 
 
 
-                <ListView x:Name="lvTienThu" Width="auto" Height="174" HorizontalAlignment="Center" >
+                <ListView x:Name="lvTienThu" Width="auto" Height="140" HorizontalAlignment="Center" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Họ tên" >

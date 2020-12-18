@@ -12,7 +12,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns:local="clr-namespace:WeSplit"
         mc:Ignorable="d"
-        Title="New Journey" Height="650" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="New Journey" Height="650" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closed="Window_Closed">
     <Window.Background>
         <ImageBrush  ImageSource="Data/Images/background.png"  RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Background>
