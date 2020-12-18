@@ -27,6 +27,12 @@ namespace WeSplit
         {
             InitializeComponent();
 
+            loadData();
+        }
+
+
+        public void loadData()
+        {
             allTrip = db.trips.ToList();
             //NotFinishTrip.Add(allTrip.Find(x => x.isfinish == false));Know, Remember, Forget
             for (int i = 0; i < allTrip.Count(); i++)
@@ -40,15 +46,27 @@ namespace WeSplit
             tripdata.ItemsSource = NotFinishTrip;
             data = tripdata;
         }
-
         //function show detail window of 1 trip when clicked
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = (sender as FrameworkElement).DataContext;
-            var x = (item as trip).id;
+            var id = (item as trip).id;
 
-            Window detail = new DetailWindow(x);
-            detail.ShowDialog();
+            DetailWindow detail = new DetailWindow(id);
+            //this.Hide();
+            // detail.Dying += test;
+            this.Close();
+            detail.Show();
+
+            //loadData();
+
+
+        }
+
+        void test()
+        {
+            loadData();
+            MessageBox.Show("heleo");
         }
 
         //open place window tab

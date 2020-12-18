@@ -15,16 +15,16 @@ namespace WeSplit
     /// <summary>
     /// Interaction logic for EditJourney.xaml
     /// </summary>
-    public partial class EditJourney : Window
+    public partial class EditMember : Window
     {
         public delegate void DeathHandler();
         public event DeathHandler Dying;
         int idTrip = -1;
-        public BindingList<route> _routes;
+        public BindingList<member> _members;
         trip _trip = null;
         String newPath = "";
         String oldPath = "";
-        public EditJourney(int id)
+        public EditMember(int id)
         {
             InitializeComponent();
             idTrip = id;
@@ -32,9 +32,14 @@ namespace WeSplit
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Dying?.Invoke();
+            if (idTrip != -1)
+            {
+                DetailWindow detaimScreen = new DetailWindow(idTrip);
+                detaimScreen.Show();
+
+            }
         }
-        public EditJourney()
+        public EditMember()
         {
             InitializeComponent();
         }
@@ -72,8 +77,8 @@ namespace WeSplit
             if (idTrip == -1)
             {
                 journeyPlace.ItemsSource = new BindingList<place>(db.places.ToList());
-                addRouteAddNew_Click(sender, e);
-                addRouteEdit.IsEnabled = false;
+                addMemberAddNew_Click(sender, e);
+                addMemberEdit.IsEnabled = false;
             }
             else
             {
@@ -85,9 +90,9 @@ namespace WeSplit
                 journeyName.Text = _trip.name;
                 journeyBegDate.SelectedDate = _trip.datetogo;
                 journeyEndDate.SelectedDate = _trip.returndate;
-                _routes = new BindingList<route>(_trip.routes.ToList());
-                routeNameEdit.ItemsSource = _routes;
-                routeList.ItemsSource = _routes;
+                _members = new BindingList<member>(_trip.members.ToList());
+                memberNameEdit.ItemsSource = _members;
+                memberList.ItemsSource = _members;
                 journeyThumbnail.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + _trip.thumbnail, UriKind.Absolute));
                 journeyEndDate.BlackoutDates.Add(new CalendarDateRange(new DateTime(1, 1, 1), (DateTime)journeyBegDate.SelectedDate));
             }
@@ -95,45 +100,28 @@ namespace WeSplit
 
         private void routeName_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (routeNameEdit.SelectedItem != null)
-                routeMoney.Text = ((route)routeNameEdit.SelectedItem).cost.ToString();
+            if (memberNameEdit.SelectedItem != null)
+            {
+                memberMoney.Text = ((member)memberNameEdit.SelectedItem).collectedmoney.ToString();
+                memberPhone.Text = ((member)memberNameEdit.SelectedItem).phonenumber;
+            }
         }
 
         private void finishEditJourney_Click(object sender, RoutedEventArgs e)
         {
-            if (idTrip != -1)
-            {
-                DetailWindow detailScreen = new DetailWindow(idTrip);
-                this.Close();
-                detailScreen.Show();
-            }
-            else
-            {
-                this.Close();
-            }
+            this.Close();
         }
 
-        private void addRouteEdit_Click(object sender, RoutedEventArgs e)
+       
+        private void addMemberAddNew_Click(object sender, RoutedEventArgs e)
         {
-            routeNameEdit.Visibility = Visibility.Visible;
-            routeNameAddNew.Visibility = Visibility.Collapsed;
-            addRouteAddNew.Visibility = Visibility.Visible;
-            addRouteEdit.Visibility = Visibility.Collapsed;
-            if (routeNameEdit.SelectedItem != null)
-                routeMoney.Text = ((route)routeNameEdit.SelectedItem).cost.ToString();
-            routeNameAddNew.Text = "";
+            memberNameEdit.Visibility = Visibility.Collapsed;
+            memberNameAddNew.Visibility = Visibility.Visible;
+            addMemberAddNew.Visibility = Visibility.Collapsed;
+            addMemberEdit.Visibility = Visibility.Visible;
+            memberMoney.Text = "";
         }
-
-        private void addRouteAddNew_Click(object sender, RoutedEventArgs e)
-        {
-            routeNameEdit.Visibility = Visibility.Collapsed;
-            routeNameAddNew.Visibility = Visibility.Visible;
-            addRouteAddNew.Visibility = Visibility.Collapsed;
-            addRouteEdit.Visibility = Visibility.Visible;
-            routeMoney.Text = "";
-        }
-
-        private void saveRoute_Click(object sender, RoutedEventArgs e)
+        private void saveMember_Click(object sender, RoutedEventArgs e)
         {
             var db = new wesplitEntities();
             var _journeyBegDate = journeyBegDate.SelectedDate;
@@ -164,10 +152,17 @@ namespace WeSplit
 
             var _jorneyThumbnail = newPath;
 
-            if (routeMoney.Text.Equals(""))
+            if (memberMoney.Text.Equals(""))
             {
                 Err.Foreground = Brushes.Red;
-                Err.Text = "Hay them chi phi lo trinh";
+                Err.Text = "Hãy bổ sung trường tiền thu";
+                return;
+            }
+
+            if (memberPhone.Text.Equals(""))
+            {
+                Err.Foreground = Brushes.Red;
+                Err.Text = "Hãy bổ sung trường số điện thoại";
                 return;
             }
 
@@ -183,36 +178,38 @@ namespace WeSplit
 
                 db.SaveChanges();
                 Err.Foreground = Brushes.Green;
-                Err.Text = "Da cap nhat thong tin chuyen di";
+                Err.Text = "Đã cập nhật thông tin chuyến đi";
 
 
-                if (routeNameEdit.Visibility == Visibility.Visible && routeNameEdit.SelectedIndex != -1)
+                if (memberNameEdit.Visibility == Visibility.Visible && memberNameEdit.SelectedIndex != -1)
                 {
-                    var id = ((route)routeNameEdit.SelectedItem).id;
-                    var oldRoute = db.routes.Find(id);
-                    oldRoute.cost = int.Parse(routeMoney.Text);
+                    var id = ((member)memberNameEdit.SelectedItem).id;
+                    var oldMember = db.members.Find(id);
+                    oldMember.collectedmoney = int.Parse(memberMoney.Text);
+                    oldMember.phonenumber = memberPhone.Text;
                     db.SaveChanges();
                     Err.Foreground = Brushes.Green;
-                    Err.Text = "Da cap nhat thong tin lo trinh";
+                    Err.Text = "Da cap nhat thong tin thanh vien";
                 }
-                else if (routeNameAddNew.Visibility == Visibility.Visible)
+                else if (memberNameAddNew.Visibility == Visibility.Visible)
                 {
-                    if (routeNameAddNew.Text.Equals(""))
+                    if (memberNameAddNew.Text.Equals(""))
                     {
                         Err.Foreground = Brushes.Red;
-                        Err.Text = "Hay them ten lo trinh";
+                        Err.Text = "Hay them ten thanh vien";
                         return;
                     }
 
-                    var maxId = db.routes.Max(x => x.id);
-                    route newRoute = new route();
-                    newRoute.id = maxId + 1;
-                    newRoute.idtrip = idTrip;
-                    newRoute.cost = int.Parse(routeMoney.Text);
-                    newRoute.place = routeNameAddNew.Text;
-                    db.routes.Add(newRoute);
+                    var maxId = db.members.Max(x => x.id);
+                    member newMember = new member();
+                    newMember.id = maxId + 1;
+                    newMember.idtrip = idTrip;
+                    newMember.collectedmoney = int.Parse(memberMoney.Text);
+                    newMember.name = memberNameAddNew.Text;
+                    newMember.phonenumber = memberPhone.Text;
+                    db.members.Add(newMember);
                     Err.Foreground = Brushes.Green;
-                    Err.Text = "Da them moi lo trinh";
+                    Err.Text = "Da them moi thanh vien";
                     db.SaveChanges();
                 }
             }
@@ -234,7 +231,7 @@ namespace WeSplit
                         return;
                     }
 
-                    if (routeNameAddNew.Text.Equals(""))
+                    if (memberNameAddNew.Text.Equals(""))
                     {
                         Err.Foreground = Brushes.Red;
                         Err.Text = "Hay them ten lo trinh";
@@ -264,29 +261,31 @@ namespace WeSplit
                     Err.Text = "Da them moi chuyen di";
                     db.SaveChanges();
                 }
-                var _routeName = routeNameAddNew.Text;
-                var _routeMoney = int.Parse(routeMoney.Text);
+                var _memberName = memberNameAddNew.Text;
+                var _memberMoney = int.Parse(memberMoney.Text);
                 //var _routeDescription = routeDescription.Text;
-                route newRoute = new route();
-                newRoute.id = db.routes.Max(x => x.id) + 1;
-                newRoute.idtrip = _trip.id;
-                newRoute.cost = _routeMoney;
-                newRoute.place = _routeName;
-                db.routes.Add(newRoute);
+                member newMember = new member();
+                newMember.id = db.routes.Max(x => x.id) + 1;
+                newMember.idtrip = _trip.id;
+                newMember.collectedmoney = _memberMoney;
+                newMember.name = _memberName;
+                db.members.Add(newMember);
                 Err.Foreground = Brushes.Green;
-                Err.Text = "Da them moi lo trinh";
+                Err.Text = "Da them moi thanh vien";
                 db.SaveChanges();
-                routeNameAddNew.Text = "";
-                routeMoney.Text = "";
+                memberNameAddNew.Text = "";
+                memberMoney.Text = "";
 
             }
-            _routes = new BindingList<route>(db.routes.Where(x => x.idtrip == _trip.id || x.idtrip == idTrip).ToList());
-            routeList.ItemsSource = _routes;
-            var tmp = routeNameEdit.SelectedIndex;
-            routeNameEdit.ItemsSource = _routes;
-            routeNameEdit.SelectedIndex = tmp;
+            _members = new BindingList<member>(db.members.Where(x => x.idtrip == _trip.id || x.idtrip == idTrip).ToList());
+            memberList.ItemsSource = _members;
+            var tmp = memberNameEdit.SelectedIndex;
+            memberNameEdit.ItemsSource = _members;
+            memberNameEdit.SelectedIndex = tmp;
             //db.SaveChanges();
         }
+
+
 
         private void journeyBegDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -299,16 +298,43 @@ namespace WeSplit
         {
             try
             {
-                var money = int.Parse(routeMoney.Text);
+                var money = int.Parse(memberMoney.Text);
                 Err.Text = "";
             }
             catch (Exception err)
             {
                 Debug.WriteLine(err.Message);
                 Err.Text = "Tien la so nguyen";
-                routeMoney.Text = "";
+                memberMoney.Text = "";
                 //routeMoney.Focus();
             }
+        }
+
+        private void memberPhonne_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var phone = int.Parse(memberPhone.Text);
+                Err.Text = "";
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+                Err.Text = "SDT phai la day so nguyen";
+                memberPhone.Text = "";
+                //routeMoney.Focus();
+            }
+        }
+
+        private void addMemberEdit_Click(object sender, RoutedEventArgs e)
+        {
+            memberNameEdit.Visibility = Visibility.Visible;
+            memberNameAddNew.Visibility = Visibility.Collapsed;
+            addMemberAddNew.Visibility = Visibility.Visible;
+            addMemberEdit.Visibility = Visibility.Collapsed;
+            if (memberNameEdit.SelectedItem != null)
+                memberMoney.Text = ((member)memberNameEdit.SelectedItem).collectedmoney.ToString();
+            memberNameAddNew.Text = "";
         }
     }
 }

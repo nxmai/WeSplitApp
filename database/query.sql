@@ -195,3 +195,6 @@ insert into member values ('19', N'Trần Dần Bảy 7', '2403294', 30000, '7')
 
  select * from trip join places on trip.idplace = places.id;
  
+ select * from trip
+
+ select * from member

@@ -1,0 +1,109 @@
+﻿<Window x:Class="WeSplit.EditMember"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        xmlns:local="clr-namespace:WeSplit"
+        mc:Ignorable="d"
+        Title="New Journey" Height="650" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush  ImageSource="Data/Images/background.png"  RenderOptions.BitmapScalingMode="HighQuality"/>
+    </Window.Background>
+    <Grid>
+        <GroupBox Header="LET 'S GO ON A NEW TRIP" Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="31.6,43" UseLayoutRounding="False">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}" Text="{Binding}" FontWeight="Bold" FontSize="25" />
+                    </StackPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel  Grid.Column="0" Grid.Row="0" Margin="10" >
+                    <TextBox Name="journeyName"  Margin="0,0,0,20" materialDesign:HintAssist.Hint="Tên Chuyến Đi" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" VerticalAlignment="Center" FontSize="20"/>
+
+                    <ComboBox Name="journeyPlace" Margin="0,0,0,20" materialDesign:HintAssist.Hint="Địa Danh" Foreground="Black" IsEditable="False" FontSize="20" ItemsSource="{Binding _places}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding id}" ></TextBlock>
+                                    <TextBlock Text=" - " ></TextBlock>
+                                    <TextBlock Text="{Binding name}" ></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <DatePicker Name="journeyBegDate" Margin="0,0,10,20" HorizontalAlignment="Left" Width="auto" materialDesign:HintAssist.Hint="Ngày Đi" Style="{StaticResource MaterialDesignOutlinedDatePicker}" FontSize="20" SelectedDateChanged="journeyBegDate_SelectedDateChanged" />
+                        <DatePicker Name="journeyEndDate" Margin="10,0,0,20" HorizontalAlignment="Left" Width="auto" materialDesign:HintAssist.Hint="Ngày Về" Style="{StaticResource MaterialDesignOutlinedDatePicker}" FontSize="20" />
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel  Grid.Column="1" Grid.Row="0" Margin="10" >
+                    <ComboBox  Margin="0,15,0,0" Name="memberNameEdit" materialDesign:HintAssist.Hint="Tên thành viên" ItemsSource="{Binding _routes}" Foreground="Black" VerticalAlignment="Center" FontSize="20" SelectionChanged="routeName_SelectionChanged" IsEditable="False" Visibility="Visible">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding id}" ></TextBlock>
+                                    <TextBlock Text=" - " ></TextBlock>
+                                    <TextBlock Text="{Binding name}" ></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBox Name="memberNameAddNew" materialDesign:HintAssist.Hint="Tên thành viên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" VerticalAlignment="Center" FontSize="20" Visibility="Collapsed"/>
+
+                    <!--<TextBox Name="routeDescription" materialDesign:HintAssist.Hint="Mô Tả" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="0,0,-0.2,0" Width="430" />-->
+                    <StackPanel>
+                        <TextBox Name="memberPhone" Margin="0,0,20,0" Width="200" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Số điện thoại " Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" VerticalAlignment="Center" FontSize="20" LostFocus="memberPhonne_LostFocus" />
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+
+                            <TextBox Name="memberMoney" Margin="0,0,20,0" Width="200" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Tiền Thu" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" VerticalAlignment="Center" FontSize="20" LostFocus="routeMoney_LostFocus" />
+
+                            <Button Name="saveMember" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon ContentSave}" ToolTip="Save Route" Click="saveMember_Click" />
+                            <Button Name="addMemberAddNew" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon MapPlus}" ToolTip="Add Route" Click="addMemberAddNew_Click" />
+                            <Button Name="addMemberEdit" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon ContentSaveEdit}" ToolTip="Edit Route" Click="addMemberEdit_Click" Visibility="Collapsed"/>
+                            <Button Name="finishEditJourney" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon ExitToApp}" ToolTip="Finish Edit Journey" Click="finishEditJourney_Click" />
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock Margin="5" Name="Err" Foreground="Red"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Name="journeyThumbnail" Height="200" Width="250" Visibility="Visible" ></Image>
+                    <Button Name="addThumbail" Click="addThumbail_Click">Add Picture</Button>
+                </StackPanel>
+                <ListView Name="memberList" ItemsSource="{Binding _routes}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+                    <ListView.View >
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Tên thành viên"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding phonenumber}" Header="SDT"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding collectedmoney}" Header="Tiền thu"/>
+                        </GridView>
+                    </ListView.View>
+
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource MaterialDesignGridViewItem}">
+
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </Grid>
+        </GroupBox>
+    </Grid>
+
+</Window>

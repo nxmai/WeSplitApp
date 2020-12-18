@@ -82,6 +82,9 @@
     <Compile Include="EditJourney.xaml.cs">
       <DependentUpon>EditJourney.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditMember.xaml.cs">
+      <DependentUpon>EditMember.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditJourney.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditMember.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

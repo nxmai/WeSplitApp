@@ -46,6 +46,9 @@ namespace WeSplit
         List<restMoney> listRestMoney = new List<restMoney>();
         List<image> listImage = new List<image>();
 
+        public delegate void DeathHandler();
+        public event DeathHandler Dying;
+
 
         public DetailWindow(int id)
         {
@@ -197,6 +200,9 @@ namespace WeSplit
             lvTienConLai.ItemsSource = listRestMoney;
 
             lvTienThu.ItemsSource = listMember;
+
+            journeyBegDate.DataContext = selectedTrip;
+            journeyEndDate.DataContext = selectedTrip;
         }
 
         void customizeWindow()
@@ -204,8 +210,8 @@ namespace WeSplit
             journeyName.Text = selectedTrip.name;
             collectedTotalTxt.Text = selectedTrip.totalCollectedMoney.ToString();
             costTotalTxt.Text = selectedTrip.totalCostMoney.ToString();
-            dateGoTXT.Text = selectedTrip.datetogo.ToString();
-            dateReturnTXT.Text = selectedTrip.returndate.ToString();
+            //dateGoTXT.Text = selectedTrip.datetogo.ToString();
+           // dateReturnTXT.Text = selectedTrip.returndate.ToString();
             try
             {
                 var uri = new Uri(getFolder() + $"{selectedTrip.thumbnail}", UriKind.Absolute);
@@ -319,13 +325,15 @@ namespace WeSplit
         private void addRouteClick(object sender, RoutedEventArgs e)
         {
             var editRouteScreen = new EditJourney(selectedTrip.id);
-            this.Hide();
+            this.Close();
             editRouteScreen.Show();
         }
 
         private void addMemberClick(object sender, RoutedEventArgs e)
         {
-
+            var editMemberScreen = new EditMember(selectedTrip.id);
+            this.Close();
+            editMemberScreen.Show();
         }
 
         private void updateDateGoClick(object sender, RoutedEventArgs e)
@@ -335,6 +343,36 @@ namespace WeSplit
 
         private void updateReturnDateClick(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void journeyBegDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            journeyEndDate.BlackoutDates.Clear();
+            journeyEndDate.SelectedDate = null;
+            journeyEndDate.BlackoutDates.Add(new CalendarDateRange(new DateTime(1, 1, 1), (DateTime)journeyBegDate.SelectedDate));
+
+            var temp = db.trips.Where(x => x.id == selectedTrip.id).SingleOrDefault();
+            temp.datetogo = journeyBegDate.SelectedDate;
+            temp.returndate = journeyEndDate.SelectedDate;
+            db.SaveChanges();
+        }
+
+        private void journeyEndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var temp = db.trips.Where(x => x.id == selectedTrip.id).SingleOrDefault();
+            temp.returndate = journeyEndDate.SelectedDate;
+            db.SaveChanges();
+
+           // MessageBox.Show(db.trips.Where(x => x.id == selectedTrip.id).First().returndate.ToString());
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            
+           // Dying?.Invoke();
+            //this.Close();
 
         }
     }

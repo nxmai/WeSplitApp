@@ -3,10 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns:local="clr-namespace:WeSplit"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="DetailWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" >
+        Title="DetailWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen"  Closing="Window_Closing">
 
     <Window.Background>
         <ImageBrush  ImageSource="Data/Images/background.png"  RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -119,19 +126,26 @@
 
 
             <StackPanel Grid.Column="1" Margin="10">
-                <StackPanel >
-                    <TextBlock Name="journeyName" FontSize="30" Height="45" Foreground="HotPink" FontWeight="Heavy" HorizontalAlignment="Center"></TextBlock>
-                    <StackPanel Orientation="Horizontal" Height="30">
-                        <TextBlock FontSize="16" FontWeight="Bold">Ngày đi:</TextBlock>
-                        <Button Margin="5,0,5,-2" Width="20" Height="20" VerticalAlignment="Top" Click="updateDateGoClick"></Button>
-                        <TextBlock x:Name="dateGoTXT" FontSize="16" FontWeight="Medium" Foreground="Gray" ></TextBlock>
+                <TextBlock Name="journeyName" FontSize="30" Height="45" Foreground="HotPink" FontWeight="Heavy" HorizontalAlignment="Center"></TextBlock>
+                    
+                <!--<StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" VerticalAlignment="Center" FontWeight="Bold">Ngày đi: </TextBlock>
+                        <DatePicker Name="journeyBegDate"   Width="30" Height="30"  VerticalAlignment= "Bottom"  FontSize="1" SelectedDateChanged="journeyBegDate_SelectedDateChanged" />
+                        <TextBlock x:Name="dateGoTXT"></TextBlock>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="30">
-                        <TextBlock FontSize="16" FontWeight="Bold">Ngày về:</TextBlock>
-                        <Button Margin="5,0,5,0" VerticalAlignment="Top" Click="updateReturnDateClick" Width="20" Height="20"></Button>
-                        <TextBlock x:Name="dateReturnTXT" FontSize="16" FontWeight="Medium" Foreground="Gray"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" FontWeight="Bold" VerticalAlignment="Center">Ngày về:</TextBlock>
+                        <DatePicker IsHitTestVisible="False"  Name="journeyEndDate" HorizontalAlignment="Right"  Width="30" Height="30"  />
+                        <TextBlock x:Name="dateReturnTXT"></TextBlock>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="30">
+                </StackPanel>-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <DatePicker SelectedDate="{Binding datetogo}" Name="journeyBegDate" Margin="0,0,10,20" HorizontalAlignment="Left" Width="auto" materialDesign:HintAssist.Hint="Ngày Đi" Style="{StaticResource MaterialDesignOutlinedDatePicker}" FontSize="20" SelectedDateChanged="journeyBegDate_SelectedDateChanged" />
+                    <DatePicker SelectedDate="{Binding returndate}" Name="journeyEndDate" Margin="10,0,0,20" HorizontalAlignment="Left" Width="auto" materialDesign:HintAssist.Hint="Ngày Về" Style="{StaticResource MaterialDesignOutlinedDatePicker}" FontSize="20"  SelectedDateChanged="journeyEndDate_SelectedDateChanged"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Height="30">
                         <TextBlock FontSize="16"  VerticalAlignment="Bottom" FontWeight="Bold" Width="100" Foreground="Blue">Tổng thu:</TextBlock>
                         <TextBlock x:Name="collectedTotalTxt" VerticalAlignment="Bottom" FontSize="20"  FontWeight="Bold" Foreground="DeepPink"></TextBlock>
                     </StackPanel>
@@ -143,37 +157,39 @@
                     <ScrollViewer Margin="0,0,0,15" Height="130" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
                         <StackPanel Name="carousel" Height="120" Orientation="Horizontal"></StackPanel>
                     </ScrollViewer>
-                    <ListView x:Name="lvTienThu" Width="auto" Height="174" HorizontalAlignment="Center" Margin="67,0,67.667,0">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Họ tên" >
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding name}"></TextBlock>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="sđt" >
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding phonenumber}"></TextBlock>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="Tiền thu">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding collectedmoney}"></TextBlock>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
 
 
-                            </GridView>
-                        </ListView.View>
 
-                    </ListView>
-                </StackPanel>
+                <ListView x:Name="lvTienThu" Width="auto" Height="174" HorizontalAlignment="Center" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Họ tên" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding name}"></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="sđt" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding phonenumber}"></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Tiền thu">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="14" FontWeight="Medium" Text="{Binding collectedmoney}"></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+
+                        </GridView>
+                    </ListView.View>
+
+                </ListView>
             </StackPanel>
 
             <StackPanel Grid.Column="2" Margin="10">
