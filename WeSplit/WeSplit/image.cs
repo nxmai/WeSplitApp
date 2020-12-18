@@ -16,7 +16,7 @@ namespace WeSplit
     {
         public int id { get; set; }
         public string path { get; set; }
-        public int idtrip { get; set; }
+        public Nullable<int> idtrip { get; set; }
     
         public virtual trip trip { get; set; }
     }

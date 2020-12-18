@@ -23,7 +23,7 @@ create table trip
 	id int not null,
 	name nvarchar(50),
 	idplace int,
-	thumbnail char(50),
+	thumbnail char(60),
 	datetogo date,
 	returndate date,
 	isfinish bit,
@@ -41,7 +41,7 @@ go
 create table image
 (
 	id int not null,
-	path char(50),
+	path char(60),
 	idtrip int
 
 	constraint pk_image primary key (id)

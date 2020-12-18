@@ -18,7 +18,7 @@ namespace WeSplit
         public string name { get; set; }
         public string phonenumber { get; set; }
         public Nullable<int> collectedmoney { get; set; }
-        public int idtrip { get; set; }
+        public Nullable<int> idtrip { get; set; }
     
         public virtual trip trip { get; set; }
     }

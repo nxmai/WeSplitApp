@@ -4,26 +4,24 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="wesplitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="wesplitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="image">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="idtrip" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="path" Type="char" MaxLength="50" />
-          <Property Name="idtrip" Type="int" Nullable="false" />
+          <Property Name="path" Type="char" MaxLength="60" />
+          <Property Name="idtrip" Type="int" />
         </EntityType>
         <EntityType Name="member">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="idtrip" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
           <Property Name="phonenumber" Type="char" MaxLength="11" />
           <Property Name="collectedmoney" Type="int" />
-          <Property Name="idtrip" Type="int" Nullable="false" />
+          <Property Name="idtrip" Type="int" />
         </EntityType>
         <EntityType Name="places">
           <Key>
@@ -37,22 +35,11 @@
         <EntityType Name="route">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="idtrip" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="place" Type="nvarchar" MaxLength="50" />
           <Property Name="cost" Type="int" />
-          <Property Name="idtrip" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="idtrip" Type="int" />
         </EntityType>
         <EntityType Name="trip">
           <Key>
@@ -61,7 +48,7 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
           <Property Name="idplace" Type="int" />
-          <Property Name="thumbnail" Type="char" MaxLength="50" />
+          <Property Name="thumbnail" Type="char" MaxLength="60" />
           <Property Name="datetogo" Type="date" />
           <Property Name="returndate" Type="date" />
           <Property Name="isfinish" Type="bit" />
@@ -69,7 +56,7 @@
           <Property Name="totalexpend" Type="int" />
         </EntityType>
         <Association Name="fk_image">
-          <End Role="trip" Type="Self.trip" Multiplicity="1" />
+          <End Role="trip" Type="Self.trip" Multiplicity="0..1" />
           <End Role="image" Type="Self.image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="trip">
@@ -81,7 +68,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_member">
-          <End Role="trip" Type="Self.trip" Multiplicity="1" />
+          <End Role="trip" Type="Self.trip" Multiplicity="0..1" />
           <End Role="member" Type="Self.member" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="trip">
@@ -93,7 +80,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_route">
-          <End Role="trip" Type="Self.trip" Multiplicity="1" />
+          <End Role="trip" Type="Self.trip" Multiplicity="0..1" />
           <End Role="route" Type="Self.route" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="trip">
@@ -121,7 +108,6 @@
           <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="places" EntityType="Self.places" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="route" EntityType="Self.route" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="trip" EntityType="Self.trip" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_image" Association="Self.fk_image">
             <End Role="trip" EntitySet="trip" />
@@ -140,31 +126,28 @@
             <End Role="trip" EntitySet="trip" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="wesplitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="image">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="idtrip" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="path" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="idtrip" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="trip" Relationship="Self.fk_image" FromRole="image" ToRole="trip" />
+          <Property Name="path" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="idtrip" Type="Int32" />
+          <NavigationProperty Name="trip" Relationship="wesplitModel.fk_image" FromRole="image" ToRole="trip" />
         </EntityType>
         <EntityType Name="member">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="idtrip" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="phonenumber" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
           <Property Name="collectedmoney" Type="Int32" />
-          <Property Name="idtrip" Type="Int32" Nullable="false" />
+          <Property Name="idtrip" Type="Int32" />
           <NavigationProperty Name="trip" Relationship="Self.fk_member" FromRole="member" ToRole="trip" />
         </EntityType>
         <EntityType Name="place">
@@ -180,23 +163,12 @@
         <EntityType Name="route">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="idtrip" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="place" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="cost" Type="Int32" />
           <Property Name="idtrip" Type="Int32" Nullable="false" />
           <NavigationProperty Name="trip" Relationship="Self.fk_route" FromRole="route" ToRole="trip" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="trip">
           <Key>
@@ -205,7 +177,7 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="idplace" Type="Int32" />
-          <Property Name="thumbnail" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="thumbnail" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
           <Property Name="datetogo" Type="DateTime" Precision="0" />
           <Property Name="returndate" Type="DateTime" Precision="0" />
           <Property Name="isfinish" Type="Boolean" />
@@ -217,7 +189,7 @@
           <NavigationProperty Name="routes" Relationship="Self.fk_route" FromRole="trip" ToRole="route" />
         </EntityType>
         <Association Name="fk_image">
-          <End Role="trip" Type="Self.trip" Multiplicity="1" />
+          <End Role="trip" Type="Self.trip" Multiplicity="0..1" />
           <End Role="image" Type="Self.image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="trip">
@@ -229,7 +201,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_member">
-          <End Role="trip" Type="Self.trip" Multiplicity="1" />
+          <End Role="trip" Type="Self.trip" Multiplicity="0..1" />
           <End Role="member" Type="Self.member" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="trip">
@@ -269,7 +241,6 @@
           <EntitySet Name="members" EntityType="Self.member" />
           <EntitySet Name="places" EntityType="Self.place" />
           <EntitySet Name="routes" EntityType="Self.route" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="trips" EntityType="Self.trip" />
           <AssociationSet Name="fk_image" Association="Self.fk_image">
             <End Role="trip" EntitySet="trips" />
@@ -331,17 +302,6 @@
                 <ScalarProperty Name="place" ColumnName="place" />
                 <ScalarProperty Name="cost" ColumnName="cost" />
                 <ScalarProperty Name="idtrip" ColumnName="idtrip" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="wesplitModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

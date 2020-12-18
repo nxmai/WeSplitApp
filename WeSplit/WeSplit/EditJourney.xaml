@@ -78,10 +78,10 @@
                         <Button Name="addRouteEdit" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon ContentSaveEdit}" ToolTip="Edit Route" Click="addRouteEdit_Click" Visibility="Collapsed"/>
                         <Button Name="finishEditJourney" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon ExitToApp}" ToolTip="Finish Edit Journey" Click="finishEditJourney_Click" />
                     </StackPanel>
-                    <TextBlock Name="Err" Foreground="Red"></TextBlock>
+                    <TextBlock Margin="5" Name="Err" Foreground="Red"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Image Name="journeyThumbnail" Height="200" Width="250" Visibility="Visible"></Image>
+                    <Image Name="journeyThumbnail" Height="200" Width="250" Visibility="Visible" ></Image>
                     <Button Name="addThumbail" Click="addThumbail_Click">Add Picture</Button>
                 </StackPanel>
                 <ListView Name="routeList" ItemsSource="{Binding _routes}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">

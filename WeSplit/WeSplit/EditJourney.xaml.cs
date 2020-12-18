@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 
@@ -21,6 +22,8 @@ namespace WeSplit
         int idTrip = -1;
         public BindingList<route> _routes;
         trip _trip = null;
+        String newPath = "";
+        String oldPath = "";
         public EditJourney(int id)
         {
             InitializeComponent();
@@ -38,18 +41,29 @@ namespace WeSplit
 
         private void addThumbail_Click(object sender, RoutedEventArgs e)
         {
+            if (journeyThumbnail.Source != null)
+                oldPath = journeyThumbnail.Source.ToString().Substring(8);
             var screen = new OpenFileDialog();
             if (screen.ShowDialog() == true)
             {
                 var thumbnailPath = screen.FileName;
-                var savePath = AppDomain.CurrentDomain.BaseDirectory + "Data\\fakedata\\" + Path.GetFileName(thumbnailPath);
-                if (Path.GetFileName(thumbnailPath).Length > 30)
-                {
-                    savePath = AppDomain.CurrentDomain.BaseDirectory + "Data\\fakedata\\" + Path.GetFileName(thumbnailPath).Substring(0, 30) + Path.GetExtension(thumbnailPath);
-                }
+                newPath = "Data/fakedata/" + Guid.NewGuid() + Path.GetExtension(thumbnailPath);
+                var savePath = AppDomain.CurrentDomain.BaseDirectory + newPath;
                 File.Copy(thumbnailPath, savePath, true);
                 var thumbnail = new BitmapImage(new Uri(savePath, UriKind.Absolute));
+
                 journeyThumbnail.Source = thumbnail;
+            }
+            if (idTrip != -1)
+            {
+                var db = new wesplitEntities();
+                var oldTrip = db.trips.Find(idTrip);
+                if (!newPath.Equals(oldTrip.thumbnail))
+                    oldTrip.thumbnail = newPath;
+
+                db.SaveChanges();
+                Err.Foreground = Brushes.Green;
+                Err.Text = "Da cap nhat thong tin chuyen di";
             }
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -118,32 +132,32 @@ namespace WeSplit
 
             if (_journeyBegDate == null)
             {
+                Err.Foreground = Brushes.Red;
                 Err.Text = "Hay chon ngay di";
                 return;
             }
 
             if (_journeyEndDate == null)
             {
+                Err.Foreground = Brushes.Red;
                 Err.Text = "Hay chon ngay ve";
                 return;
             }
 
             if (journeyThumbnail.Source == null)
             {
+                Err.Foreground = Brushes.Red;
                 Err.Text = "Hay them hinh cua dia diem";
                 return;
             }
 
             Err.Text = "";
-            var _jorneyThumbnail = "Data\\fakedata\\" + Path.GetFileName(journeyThumbnail.Source.ToString());
-            if (Path.GetFileName(journeyThumbnail.Source.ToString()).Length > 30)
-            {
-                _jorneyThumbnail = "Data\\fakedata\\" + Path.GetFileName(journeyThumbnail.Source.ToString()).Substring(0, 30) + Path.GetExtension(journeyThumbnail.Source.ToString());
-            }
 
+            var _jorneyThumbnail = newPath;
 
             if (routeMoney.Text.Equals(""))
             {
+                Err.Foreground = Brushes.Red;
                 Err.Text = "Hay them chi phi lo trinh";
                 return;
             }
@@ -152,28 +166,31 @@ namespace WeSplit
             {
 
                 var oldTrip = db.trips.Find(idTrip);
-                if (_journeyBegDate != oldTrip.datetogo)
+                if (!_journeyBegDate.Equals(oldTrip.datetogo))
                     oldTrip.datetogo = _journeyBegDate;
 
-                if (_journeyEndDate != oldTrip.returndate)
+                if (!_journeyEndDate.Equals(oldTrip.returndate))
                     oldTrip.returndate = _journeyEndDate;
 
-                if (_jorneyThumbnail != oldTrip.thumbnail)
-                    oldTrip.thumbnail = _jorneyThumbnail;
-
                 db.SaveChanges();
+                Err.Foreground = Brushes.Green;
+                Err.Text = "Da cap nhat thong tin chuyen di";
+
 
                 if (routeNameEdit.Visibility == Visibility.Visible && routeNameEdit.SelectedIndex != -1)
                 {
                     var id = ((route)routeNameEdit.SelectedItem).id;
-                    var oldRoute = db.routes.Find(id, idTrip);
+                    var oldRoute = db.routes.Find(id);
                     oldRoute.cost = int.Parse(routeMoney.Text);
                     db.SaveChanges();
+                    Err.Foreground = Brushes.Green;
+                    Err.Text = "Da cap nhat thong tin lo trinh";
                 }
                 else if (routeNameAddNew.Visibility == Visibility.Visible)
                 {
                     if (routeNameAddNew.Text.Equals(""))
                     {
+                        Err.Foreground = Brushes.Red;
                         Err.Text = "Hay them ten lo trinh";
                         return;
                     }
@@ -185,6 +202,8 @@ namespace WeSplit
                     newRoute.cost = int.Parse(routeMoney.Text);
                     newRoute.place = routeNameAddNew.Text;
                     db.routes.Add(newRoute);
+                    Err.Foreground = Brushes.Green;
+                    Err.Text = "Da them moi lo trinh";
                     db.SaveChanges();
                 }
             }
@@ -194,13 +213,22 @@ namespace WeSplit
                 {
                     if (journeyName.Text.Equals(""))
                     {
+                        Err.Foreground = Brushes.Red;
                         Err.Text = "Hay them ten chuyen di";
                         return;
                     }
 
                     if (journeyPlace.SelectedItem == null)
                     {
+                        Err.Foreground = Brushes.Red;
                         Err.Text = "Hay chon dia danh";
+                        return;
+                    }
+
+                    if (routeNameAddNew.Text.Equals(""))
+                    {
+                        Err.Foreground = Brushes.Red;
+                        Err.Text = "Hay them ten lo trinh";
                         return;
                     }
 
@@ -223,6 +251,8 @@ namespace WeSplit
                     _trip.totalexpend = 0;
                     _trip.id = db.trips.Max(x => x.id) + 1;
                     db.trips.Add(_trip);
+                    Err.Foreground = Brushes.Green;
+                    Err.Text = "Da them moi chuyen di";
                     db.SaveChanges();
                 }
                 var _routeName = routeNameAddNew.Text;
@@ -234,7 +264,11 @@ namespace WeSplit
                 newRoute.cost = _routeMoney;
                 newRoute.place = _routeName;
                 db.routes.Add(newRoute);
+                Err.Foreground = Brushes.Green;
+                Err.Text = "Da them moi lo trinh";
                 db.SaveChanges();
+                routeNameAddNew.Text = "";
+                routeMoney.Text = "";
 
             }
             _routes = new BindingList<route>(db.routes.Where(x => x.idtrip == _trip.id || x.idtrip == idTrip).ToList());
@@ -267,6 +301,5 @@ namespace WeSplit
                 //routeMoney.Focus();
             }
         }
-
     }
 }

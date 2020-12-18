@@ -1,7 +1,10 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -203,11 +206,16 @@ namespace WeSplit
             costTotalTxt.Text = selectedTrip.totalCostMoney.ToString();
             dateGoTXT.Text = selectedTrip.datetogo.ToString();
             dateReturnTXT.Text = selectedTrip.returndate.ToString();
-
-            var uri = new Uri(getFolder() + $"{selectedTrip.thumbnail}", UriKind.Absolute);
-            var bitmap = new BitmapImage(uri);
-            thumbnailImage.ImageSource = bitmap;
-
+            try
+            {
+                var uri = new Uri(getFolder() + $"{selectedTrip.thumbnail}", UriKind.Absolute);
+                var bitmap = new BitmapImage(uri);
+                thumbnailImage.ImageSource = bitmap;
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+            }
             createCarousel();
 
             customizePieChart();
@@ -266,7 +274,46 @@ namespace WeSplit
 
         private void addImageClick(object sender, RoutedEventArgs e)
         {
+            List<String> FilePath = new List<string>();
+            var screen = new OpenFileDialog();
+            screen.Multiselect = true;
+            if (screen.ShowDialog() == true)
+            {
+                var thumbnailPaths = screen.FileNames;
+                foreach (var thumbnailPath in thumbnailPaths)
+                {
+                    var savePath = "Data/fakedata/" + Guid.NewGuid() + Path.GetExtension(thumbnailPath);
+                    FilePath.Add(savePath);
+                    File.Copy(thumbnailPath, AppDomain.CurrentDomain.BaseDirectory + savePath, true);
+                    var thumbnail = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + savePath, UriKind.Absolute));
+                    var border = new Border();
+                    border.CornerRadius = new CornerRadius(15);
 
+                    var temp = new ImageBrush();
+
+                    temp.ImageSource = thumbnail;
+
+
+                    border.Background = temp;
+                    border.Width = 100;
+                    border.Height = 90;
+
+                    border.Margin = new Thickness(0, 0, 3, 0);
+
+                    carousel.Children.Add(border);
+                }
+            }
+
+            foreach (var path in FilePath)
+            {
+                var db = new wesplitEntities();
+                image _image = new image();
+                _image.id = db.images.Max(x => x.id) + 1;
+                _image.idtrip = selectedTrip.id;
+                _image.path = path;
+                db.images.Add(_image);
+                db.SaveChanges();
+            }
         }
 
         private void addRouteClick(object sender, RoutedEventArgs e)

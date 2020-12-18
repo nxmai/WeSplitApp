@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="wesplitModel.member" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="wesplitModel.place" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="wesplitModel.route" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="wesplitModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="wesplitModel.trip" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
         <AssociationConnector Association="wesplitModel.fk_image" ManuallyRouted="false" />
         <AssociationConnector Association="wesplitModel.fk_member" ManuallyRouted="false" />

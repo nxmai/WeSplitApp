@@ -29,7 +29,6 @@ namespace WeSplit
         public virtual DbSet<member> members { get; set; }
         public virtual DbSet<place> places { get; set; }
         public virtual DbSet<route> routes { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<trip> trips { get; set; }
     }
 }
