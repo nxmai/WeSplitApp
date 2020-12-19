@@ -37,6 +37,9 @@ namespace WeSplit
 
         public void loadData()
         {
+            NotFinishTrip = new List<trip>();
+            List<trip> allTrip = new List<trip>();
+            var db = new wesplitEntities();
             allTrip = db.trips.ToList();
             //NotFinishTrip.Add(allTrip.Find(x => x.isfinish == false));Know, Remember, Forget
             for (int i = 0; i < allTrip.Count(); i++)
