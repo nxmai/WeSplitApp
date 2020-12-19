@@ -54,15 +54,15 @@ namespace WeSplit
             PlaceContent.Text = imagesArray[randomNumber].Item3;
         }
 
-        private void ScreenClosing()
+       /* private void ScreenClosing()
         {
             this.Show();
-        }
+        }*/
         private void continue_click(object sender, RoutedEventArgs e)
         {
             var mainWindow = new MainWindow();
-            mainWindow.Dying += ScreenClosing;
-            this.Hide();
+            //mainWindow.Dying += ScreenClosing;
+            this.Close();
             mainWindow.Show();
         }
 
@@ -82,8 +82,8 @@ namespace WeSplit
             {
                 DisplaySplashScreen();
                 var mainWindow = new MainWindow();
-                mainWindow.Dying += ScreenClosing;
-                this.Hide();
+                //mainWindow.Dying += ScreenClosing;
+                this.Close();
                 mainWindow.Show();
             }
             else

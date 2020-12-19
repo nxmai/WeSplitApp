@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:WeSplit"
         mc:Ignorable="d"
         Title="HistoryWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="Window_Closing">
+    <Window.Icon>
+        <BitmapImage UriSource="Icon/history.png" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+    </Window.Icon>
+    
     <Window.Background>
         <ImageBrush  ImageSource="Data/Images/background.png" RenderOptions.BitmapScalingMode="HighQuality"/>
 
@@ -93,7 +97,7 @@
 
         <!--PreviewMouseLeftButtonUp="listview_click"-->
         <Grid Grid.Row="2">
-            <Image Source="Data/Images/01.png" Width="350" Margin="540 100 0 0" ></Image>
+            <Image Source="Data/Images/01.png" Width="350" Margin="540 100 0 0" RenderOptions.BitmapScalingMode="HighQuality"></Image>
 
             <ListView x:Name="tripdata" Width="520"  ItemsSource="{Binding id}" HorizontalAlignment="Center" Margin="35,0,439.667,0"  >
                 <ListView.View >
