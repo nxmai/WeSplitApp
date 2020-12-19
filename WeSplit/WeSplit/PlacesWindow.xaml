@@ -56,7 +56,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <ListView x:Name="placedata" Width="900" Height="400"  ItemsSource="{Binding id}" >
+            <ListView x:Name="placedata" Width="920" Height="400"  ItemsSource="{Binding id}" >
                 <ListView.View >
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding name}" Header="  Tên địa danh" Width="200"/>

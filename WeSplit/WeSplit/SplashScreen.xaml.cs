@@ -54,13 +54,16 @@ namespace WeSplit
             PlaceContent.Text = imagesArray[randomNumber].Item3;
         }
 
-
+        private void ScreenClosing()
+        {
+            this.Show();
+        }
         private void continue_click(object sender, RoutedEventArgs e)
         {
-            var screen = new MainWindow(); //window2 == homescreen
-            
-            screen.ShowDialog();
-            this.Close();
+            var mainWindow = new MainWindow();
+            mainWindow.Dying += ScreenClosing;
+            this.Hide();
+            mainWindow.Show();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
