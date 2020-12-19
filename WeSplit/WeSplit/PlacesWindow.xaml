@@ -8,6 +8,10 @@
         mc:Ignorable="d"
         Title="PlacesWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="Window_Closing">
 
+    <Window.Icon>
+        <BitmapImage UriSource="Icon/place.png" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+    </Window.Icon>
+    
     <Window.Background>
         <ImageBrush  ImageSource="Data/Images/background.png" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Background>
@@ -56,12 +60,38 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <ListView x:Name="placedata" Width="900" Height="400"  ItemsSource="{Binding id}" >
+            <ListView x:Name="placedata" Width="920" Height="400"  ItemsSource="{Binding id}" >
                 <ListView.View >
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding name}" Header="  Tên địa danh" Width="200"/>
+                        <GridViewColumn Width="200" Header="Tên địa danh" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="14"  Text="{Binding name}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Width="300" Header="Địa chỉ"  >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="14" Text="{Binding address}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Width="400" Header="Mô tả"  >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ScrollViewer>
+                                        <TextBlock FontSize="14"  Text="{Binding discription}" TextWrapping="Wrap" TextAlignment="Justify"></TextBlock>
+                                    </ScrollViewer>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!--<GridViewColumn DisplayMemberBinding="{Binding name}" Header="Tên địa danh" Width="200"/>
                         <GridViewColumn DisplayMemberBinding="{Binding address}" Header="Địa chỉ" Width="300"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding discription}" Header="Mô tả" Width="400"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding discription}" Header="Mô tả" Width="400"/>-->
                     </GridView>
                 </ListView.View>
 

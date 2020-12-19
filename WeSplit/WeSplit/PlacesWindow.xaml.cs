@@ -40,10 +40,18 @@ namespace WeSplit
 
         private void mainWindow(object sender, MouseButtonEventArgs e)
         {
-            /* Window main = new MainWindow();
-             main.ShowDialog();*/
-            this.Close();
+            //this.Close();
+            var mainWindow = new MainWindow();
+            mainWindow.Dying += ScreenClosing;
+            this.Hide();
+            mainWindow.Show();
         }
+
+        private void ScreenClosing()
+        {
+            this.Show();
+        }
+
 
         private void addPlace_Click(object sender, RoutedEventArgs e)
         {

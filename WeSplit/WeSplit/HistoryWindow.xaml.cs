@@ -191,18 +191,18 @@ namespace WeSplit
             placesWindow.Show();
         }
 
-        /*        private void mainWindow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-                {
-                    var mainWindow = new MainWindow();
-                    mainWindow.Dying += ScreenClosing;
-                    this.Hide();
-                    mainWindow.Show();
-                }*/
-
         private void mainWindow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            var mainWindow = new MainWindow();
+            mainWindow.Dying += ScreenClosing;
+            this.Hide();
+            mainWindow.Show();
         }
+
+/*        private void mainWindow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }*/
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
