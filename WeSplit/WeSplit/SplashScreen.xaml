@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="SplashScreen" Height="550" Width="550" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" >
 
+    <Window.Icon>
+        <BitmapImage UriSource="Icon/globe.png" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+    </Window.Icon>
+    
     <Canvas>
         <Border Canvas.Left="125" Canvas.Top="10" CornerRadius="15,15,15,15" HorizontalAlignment="Center">
             <Image Height="215" RenderOptions.BitmapScalingMode="HighQuality" Width="300" Name="image">

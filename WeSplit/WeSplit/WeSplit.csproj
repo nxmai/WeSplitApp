@@ -210,6 +210,15 @@
     <Resource Include="Data\Images\background.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Icon\add.png" />
+    <Resource Include="Icon\detail.png" />
+    <Resource Include="Icon\globe.png" />
+    <Resource Include="Icon\history.png" />
+    <Resource Include="Icon\home.png" />
+    <Resource Include="Icon\information.png" />
+    <Resource Include="Icon\place.png" />
+    <Resource Include="Icon\settings.png" />
+    <Resource Include="Icon\update.png" />
     <Resource Include="SplashImages\bao-tang-lich-su-viet-nam.jpg" />
     <Resource Include="SplashImages\bao-tang-phu-nu-nam-bo.jpg" />
     <Resource Include="SplashImages\ben-nha-rong.jpg" />

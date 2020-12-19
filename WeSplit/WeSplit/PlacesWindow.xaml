@@ -8,6 +8,10 @@
         mc:Ignorable="d"
         Title="PlacesWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="Window_Closing">
 
+    <Window.Icon>
+        <BitmapImage UriSource="Icon/place.png" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+    </Window.Icon>
+    
     <Window.Background>
         <ImageBrush  ImageSource="Data/Images/background.png" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Background>
