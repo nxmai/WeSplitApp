@@ -40,8 +40,9 @@ namespace WeSplit
 
         private void mainWindow(object sender, MouseButtonEventArgs e)
         {
-            Window main = new MainWindow();
-            main.ShowDialog();
+            /* Window main = new MainWindow();
+             main.ShowDialog();*/
+            this.Close();
         }
 
         private void addPlace_Click(object sender, RoutedEventArgs e)

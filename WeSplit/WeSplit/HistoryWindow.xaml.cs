@@ -19,7 +19,7 @@ namespace WeSplit
         wesplitEntities db = new wesplitEntities();
         public static ListView data;
 
-        public string connectionString = "Server=.;Database=wesplit;Trusted_Connection=True;";
+        public string connectionString = "Server=.\\SQLEXPRESS;Database=wesplit;Trusted_Connection=True;";
 
         public List<trip> NotFinishTrip = new List<trip>();
         public List<trip> allTrip = new List<trip>();
@@ -51,8 +51,9 @@ namespace WeSplit
             var item = (sender as FrameworkElement).DataContext;
             var x = (item as trip).id;
 
-            Window detail = new DetailWindow(x);
-            detail.ShowDialog();
+            var detail = new DetailWindow(x);
+            this.Hide();
+            detail.Show();
         }
 
         private static readonly string[] VietNamChar = new string[]
@@ -190,14 +191,22 @@ namespace WeSplit
             placesWindow.Show();
         }
 
+        /*        private void mainWindow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+                {
+                    var mainWindow = new MainWindow();
+                    mainWindow.Dying += ScreenClosing;
+                    this.Hide();
+                    mainWindow.Show();
+                }*/
+
         private void mainWindow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var mainWindow = new MainWindow();
-            mainWindow.Dying += ScreenClosing;
-            this.Hide();
-            mainWindow.Show();
+            this.Close();
         }
 
-
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Dying?.Invoke();
+        }
     }
 }

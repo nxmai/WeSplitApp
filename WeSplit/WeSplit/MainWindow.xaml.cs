@@ -15,13 +15,11 @@ namespace WeSplit
 
     public partial class MainWindow : Window
     {
-        public delegate void DeathHandler();
-        public event DeathHandler Dying;
 
         wesplitEntities db = new wesplitEntities();
         public static ListView data;
 
-        public string connectionString = "Server=.;Database=wesplit;Trusted_Connection=True;";
+        public string connectionString = "Server=.\\SQLEXPRESS;Database=wesplit;Trusted_Connection=True;";
 
         public List<trip> NotFinishTrip = new List<trip>();
         public List<trip> allTrip = new List<trip>();
@@ -58,7 +56,7 @@ namespace WeSplit
             var item = (sender as FrameworkElement).DataContext;
             var id = (item as trip).id;
 
-            DetailWindow detail = new DetailWindow(id);
+            var detail = new DetailWindow(id);
             //this.Hide();
             detail.Dying += ScreenClosing;
             detail.Dying += loadData;
@@ -85,13 +83,13 @@ namespace WeSplit
         }
 */
         //open place window tab
-        private void placeWindow(object sender, MouseButtonEventArgs e)
+        /*private void placeWindow(object sender, MouseButtonEventArgs e)
         {
             var place = new PlacesWindow();
             place.Dying += ScreenClosing;
             this.Hide();
             place.ShowDialog();
-        }
+        }*/
 
         private static readonly string[] VietNamChar = new string[]
         {
