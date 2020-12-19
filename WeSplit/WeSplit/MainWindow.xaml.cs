@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Configuration;
 
 namespace WeSplit
 {
@@ -218,6 +219,26 @@ namespace WeSplit
             this.Hide();
             historyWindow.Show();
         }
+
+        private void setting_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var main = this;
+            var settingScreen = new SettingWindow();
+            settingScreen.Show();
+            settingScreen.Topmost = true;
+            settingScreen.Focus();
+            this.IsEnabled = false;
+            settingScreen.Dying += SettingScreenClosing;
+        }
+
+        private void SettingScreenClosing()
+        {
+            this.IsEnabled = true;
+            var value = ConfigurationManager.AppSettings["ShowSplashScreen"];
+            bool showSplash = bool.Parse(value);
+
+        }
+
     }
 }
 
