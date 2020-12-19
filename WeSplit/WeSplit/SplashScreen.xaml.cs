@@ -68,28 +68,29 @@ namespace WeSplit
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            //config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
-            //config.Save(ConfigurationSaveMode.Full);
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
+            config.Save(ConfigurationSaveMode.Full);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //var value = ConfigurationManager.AppSettings["ShowSplashScreen"];
-            //showSplash = bool.Parse(value);
-            //Debug.WriteLine(value);
-            //if (showSplash == false)
-            //{
-            //    DisplaySplashScreen();
-            //    var screen = new MainWindow(); //window2 == homescreen
-            //    this.Close();
-            //    screen.ShowDialog();
-            //}
-            //else
-            //{
-            //    DisplaySplashScreen();
-            //}
-            DisplaySplashScreen();
+            var value = ConfigurationManager.AppSettings["ShowSplashScreen"];
+            showSplash = bool.Parse(value);
+            Debug.WriteLine(value);
+            if (showSplash == false)
+            {
+                DisplaySplashScreen();
+                var mainWindow = new MainWindow();
+                mainWindow.Dying += ScreenClosing;
+                this.Hide();
+                mainWindow.Show();
+            }
+            else
+            {
+                DisplaySplashScreen();
+            }
+            //DisplaySplashScreen();
         }
     }
 }
