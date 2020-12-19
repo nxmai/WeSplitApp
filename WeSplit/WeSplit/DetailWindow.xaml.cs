@@ -398,5 +398,13 @@ namespace WeSplit
         {
             
         }
+
+        private void mainWindow_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var mainWindow = new MainWindow();
+            mainWindow.Dying += ScreenClosing;
+            this.Hide();
+            mainWindow.Show();
+        }
     }
 }

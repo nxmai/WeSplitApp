@@ -58,7 +58,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                <TextBlock Text="WeSplit" VerticalAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="White" Margin="30 0 0 0"></TextBlock>
+                <TextBlock Text="WeSplit" VerticalAlignment="Center" FontSize="25" FontWeight="Bold" Foreground="White" Margin="30 0 0 0" MouseLeftButtonUp="mainWindow_MouseLeftButtonUp"></TextBlock>
             </Grid>
 
             <Grid Grid.Column="1">
