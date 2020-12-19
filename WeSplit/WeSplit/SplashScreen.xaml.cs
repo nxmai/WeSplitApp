@@ -1,9 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
 
 namespace WeSplit
 {
@@ -12,7 +10,7 @@ namespace WeSplit
     /// </summary>
     public partial class SplashScreen : Window
     {
-        bool showSplash = true;
+
         public SplashScreen()
         {
             InitializeComponent();
@@ -54,16 +52,13 @@ namespace WeSplit
             PlaceContent.Text = imagesArray[randomNumber].Item3;
         }
 
-       /* private void ScreenClosing()
-        {
-            this.Show();
-        }*/
+        /* private void ScreenClosing()
+         {
+             this.Show();
+         }*/
         private void continue_click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = new MainWindow();
-            //mainWindow.Dying += ScreenClosing;
             this.Close();
-            mainWindow.Show();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -75,22 +70,7 @@ namespace WeSplit
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var value = ConfigurationManager.AppSettings["ShowSplashScreen"];
-            showSplash = bool.Parse(value);
-            Debug.WriteLine(value);
-            if (showSplash == false)
-            {
-                DisplaySplashScreen();
-                var mainWindow = new MainWindow();
-                //mainWindow.Dying += ScreenClosing;
-                this.Close();
-                mainWindow.Show();
-            }
-            else
-            {
-                DisplaySplashScreen();
-            }
-            //DisplaySplashScreen();
+            DisplaySplashScreen();
         }
     }
 }

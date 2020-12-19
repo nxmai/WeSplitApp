@@ -107,7 +107,7 @@ namespace WeSplit
             this.Close();
         }
 
-       
+
         private void addMemberAddNew_Click(object sender, RoutedEventArgs e)
         {
             memberNameEdit.Visibility = Visibility.Collapsed;

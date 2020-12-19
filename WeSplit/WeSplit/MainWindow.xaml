@@ -7,12 +7,12 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="Window_Closing">
+        Title="MainWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="Window_Closing" SourceInitialized="Window_SourceInitialized">
 
     <Window.Icon>
         <BitmapImage UriSource="Icon/home.png" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
     </Window.Icon>
-    
+
     <Window.Background>
         <ImageBrush  ImageSource="Data/Images/background.png" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Background>
@@ -78,13 +78,13 @@
 
             <Grid Grid.Column="1">
                 <Border BorderBrush="#28292e" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="10" Width="480" Height="37">
-                    <StackPanel Margin="5" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <!--<Button  BorderThickness="0"  Background="White">
                         <fa:ImageAwesome Icon="Search" Width="18" ></fa:ImageAwesome>
                         </Button>-->
 
-                        <TextBox Name="searchTextBox" BorderBrush="White" Height="25" Width="460"
-                         FontSize="15" VerticalContentAlignment="Center" Margin="3 0 0 0" KeyUp="search_Press" 
+                        <TextBox Name="searchTextBox" BorderBrush="White" Height="27" Width="465"
+                         FontSize="12" VerticalContentAlignment="Center" KeyUp="search_Press" 
                          TextWrapping="Wrap"/>
                     </StackPanel>
                 </Border>

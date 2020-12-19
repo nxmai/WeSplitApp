@@ -19,7 +19,7 @@ namespace WeSplit
     {
         public delegate void DeathHandler();
         public event DeathHandler Dying;
-        
+
         int idTrip = -1;
         public BindingList<route> _routes;
         trip _trip = null;

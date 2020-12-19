@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Data.SqlClient;
 
 namespace WeSplit
 {
@@ -199,10 +199,10 @@ namespace WeSplit
             mainWindow.Show();
         }
 
-/*        private void mainWindow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
-        }*/
+        /*        private void mainWindow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+                {
+                    this.Close();
+                }*/
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

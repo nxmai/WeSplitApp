@@ -32,7 +32,7 @@ namespace WeSplit
             Dispatcher.Invoke(() => { Notif.Text = ""; });
         }
 
-    private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = (sender as FrameworkElement).DataContext;
             var x = (item as place).id;

@@ -49,7 +49,7 @@ namespace WeSplit
         public delegate void DeathHandler();
         public event DeathHandler Dying;
 
-        public String oldpath ="";
+        public String oldpath = "";
         int ID;
         public DetailWindow(int id)
         {
@@ -211,7 +211,7 @@ namespace WeSplit
             collectedTotalTxt.Text = selectedTrip.totalCollectedMoney.ToString();
             costTotalTxt.Text = selectedTrip.totalCostMoney.ToString();
             //dateGoTXT.Text = selectedTrip.datetogo.ToString();
-           // dateReturnTXT.Text = selectedTrip.returndate.ToString();
+            // dateReturnTXT.Text = selectedTrip.returndate.ToString();
             try
             {
                 var uri = new Uri(getFolder() + $"{selectedTrip.thumbnail}", UriKind.Absolute);
@@ -383,20 +383,20 @@ namespace WeSplit
             temp.returndate = journeyEndDate.SelectedDate;
             db.SaveChanges();
 
-           // MessageBox.Show(db.trips.Where(x => x.id == selectedTrip.id).First().returndate.ToString());
+            // MessageBox.Show(db.trips.Where(x => x.id == selectedTrip.id).First().returndate.ToString());
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Dying?.Invoke();
-            
+
             //this.Close();
 
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            
+
         }
 
         private void mainWindow_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)

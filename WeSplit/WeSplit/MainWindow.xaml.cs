@@ -1,12 +1,12 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Configuration;
 
 namespace WeSplit
 {
@@ -18,11 +18,11 @@ namespace WeSplit
     {
         public delegate void DeathHandler();
         public event DeathHandler Dying;
-
+        bool firstRun = true;
         wesplitEntities db = new wesplitEntities();
         public static ListView data;
 
-        public string connectionString = "Server=.;Database=wesplit;Trusted_Connection=True;";
+        public string connectionString = "Server=.\\SQLEXPRESS;Database=wesplit;Trusted_Connection=True;";
 
         public List<trip> NotFinishTrip = new List<trip>();
         public List<trip> allTrip = new List<trip>();
@@ -32,7 +32,7 @@ namespace WeSplit
         {
             InitializeComponent();
 
-            loadData();   
+            loadData();
         }
 
         public void loadData()
@@ -245,6 +245,21 @@ namespace WeSplit
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Dying?.Invoke();
+        }
+        private void Window_SourceInitialized(object sender, EventArgs e)
+        {
+            bool showSplash;
+            var value = ConfigurationManager.AppSettings["ShowSplashScreen"];
+            showSplash = bool.Parse(value);
+            if (showSplash == false)
+            {
+                return;
+            }
+            else
+            {
+                var sc = new SplashScreen();
+                sc.ShowDialog();
+            }
         }
     }
 }
