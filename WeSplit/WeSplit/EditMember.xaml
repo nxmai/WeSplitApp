@@ -80,10 +80,10 @@
 
                             <TextBox Name="memberMoney" Margin="0,0,20,0" Width="200" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Tiền Thu" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" VerticalAlignment="Center" FontSize="20" LostFocus="routeMoney_LostFocus" />
 
-                            <Button Name="saveMember" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon ContentSave}" ToolTip="Save Route" Click="saveMember_Click" />
-                            <Button Name="addMemberAddNew" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon MapPlus}" ToolTip="Add Route" Click="addMemberAddNew_Click" />
-                            <Button Name="addMemberEdit" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon ContentSaveEdit}" ToolTip="Edit Route" Click="addMemberEdit_Click" Visibility="Collapsed"/>
-                            <Button Name="finishEditJourney" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon ExitToApp}" ToolTip="Finish Edit Journey" Click="finishEditJourney_Click" />
+                            <Button Name="saveMember" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon ContentSave}" ToolTip="Save Member" Click="saveMember_Click" />
+                            <Button Name="addMemberAddNew" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon MapPlus}" ToolTip="Add Member" Click="addMemberAddNew_Click" />
+                            <Button Name="addMemberEdit" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon ContentSaveEdit}" ToolTip="Edit Member" Click="addMemberEdit_Click" Visibility="Collapsed"/>
+                            <Button Name="finishEditJourney" Margin="20,0,0,0"  Width="50" Height="40" Content="{materialDesign:PackIcon ExitToApp}" ToolTip="Finish Edit Member" Click="finishEditJourney_Click" />
                         </StackPanel>
                     </StackPanel>
                     <TextBlock Margin="5" Name="Err" Foreground="Red"></TextBlock>

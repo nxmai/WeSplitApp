@@ -30,6 +30,11 @@ namespace WeSplit
         {
             InitializeComponent();
 
+            loadData();
+        }
+
+        private void loadData()
+        {
             allTrip = db.trips.ToList();
             //NotFinishTrip.Add(allTrip.Find(x => x.isfinish == false));Know, Remember, Forget
             for (int i = 0; i < allTrip.Count(); i++)
@@ -49,11 +54,16 @@ namespace WeSplit
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = (sender as FrameworkElement).DataContext;
-            var x = (item as trip).id;
+            var id = (item as trip).id;
 
-            var detail = new DetailWindow(x);
+            DetailWindow detail = new DetailWindow(id);
+            //this.Hide();
+            detail.Dying += ScreenClosing;
+            detail.Dying += loadData;
             this.Hide();
             detail.Show();
+            //O = detail.oldpath;
+            //loadData();
         }
 
         private static readonly string[] VietNamChar = new string[]

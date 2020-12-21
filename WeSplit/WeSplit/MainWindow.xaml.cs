@@ -22,7 +22,7 @@ namespace WeSplit
         wesplitEntities db = new wesplitEntities();
         public static ListView data;
 
-        public string connectionString = "Server=.\\SQLEXPRESS;Database=wesplit;Trusted_Connection=True;";
+        public string connectionString = "Server=.;Database=wesplit;Trusted_Connection=True;";
 
         public List<trip> NotFinishTrip = new List<trip>();
         public List<trip> allTrip = new List<trip>();
@@ -197,6 +197,7 @@ namespace WeSplit
         {
             var addJourneyScreen = new EditJourney();
             addJourneyScreen.Dying += ScreenClosing;
+            addJourneyScreen.Dying += loadData;
             this.Hide();
             addJourneyScreen.Show();
         }
